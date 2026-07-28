@@ -1045,6 +1045,18 @@ html[data-theme=dark] .onbin:focus{background:var(--card)}
 .onbnote p:last-child{margin-bottom:0}
 .onbnote p:before{content:"·";position:absolute;left:4px;top:0;font-weight:900;color:var(--blue)}
 .onbfine{margin:11px 2px 0;font-size:11px;color:var(--ink-3);line-height:1.55;text-align:center;word-break:keep-all}
+.hlpg{padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:var(--card);margin-bottom:9px}
+.hlpg h4{margin:0 0 7px;font-size:12.5px;font-weight:900;color:var(--ink-3);letter-spacing:-.01em}
+.hlpr{display:flex;gap:9px;padding:6px 0;align-items:flex-start}
+.hlpr+.hlpr{border-top:1px dashed var(--line)}
+.hlpi{flex:0 0 20px;font-size:14px;line-height:1.5;text-align:center}
+.hlpt{min-width:0}
+.hlpt b{display:block;font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.hlpt span{display:block;margin-top:2px;font-size:11.5px;color:var(--muted);line-height:1.6;word-break:keep-all}
+.hlpegg{margin:12px 2px 2px;padding:12px 14px;border-radius:13px;border:1px dashed var(--line);
+  background:var(--blue-xl);font-size:12.5px;font-weight:700;color:var(--ink);text-align:center;
+  line-height:1.6;word-break:keep-all}
+.hlpegg em{display:block;margin-top:4px;font-size:11px;font-weight:700;color:var(--ink-3);font-style:normal}
 .setreset{margin:14px 2px 2px;text-align:center;font-size:11.5px;font-weight:700;color:var(--muted);
   cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;user-select:none}
 .setreset:hover{color:var(--danger)}
@@ -5098,6 +5110,11 @@ function openSettings(){
   document.getElementById("mTitle").textContent="⚙ 설정";
   document.getElementById("mForm").innerHTML=`
     <div class="setg">
+      <div class="seth">💡 이런 것도 있어요</div>
+      <div class="setd">눈에 잘 안 보이는 기능들을 한 화면에 모아뒀어요. 몰라도 쓰는 데 문제는 없어요.</div>
+      <div class="setb"><button class="btn" onclick="closeEdit();openHelp()">숨은 기능 보기</button></div>
+    </div>
+    <div class="setg">
       <div class="seth">💾 파일 백업</div>
       <div class="setd ${bkStale()?"warn":""}">${l?("마지막 백업: "+l):"아직 한 번도 백업하지 않았어요. 브라우저를 정리하면 전부 사라져요."}</div>
       <div class="setb">
@@ -5135,6 +5152,36 @@ function openSettings(){
     </div>
     <div class="setreset" onclick="closeEdit();resetAll()">모두 지우고 처음부터 시작하기</div>`;
   document.getElementById("mIc").innerHTML="⚙";
+  document.getElementById("mSave").style.display="none";
+  document.getElementById("overlay").classList.add("on");
+}
+
+/* ---- 숨은 기능 안내 ---- */
+function hlpRow(ic,t,d){
+  return '<div class="hlpr"><span class="hlpi">'+ic+'</span>'
+       + '<span class="hlpt"><b>'+t+'</b><span>'+d+'</span></span></div>';
+}
+function openHelp(){
+  document.getElementById("mTitle").textContent="💡 이런 것도 있어요";
+  document.getElementById("mIc").innerHTML="💡";
+  document.getElementById("mForm").innerHTML=
+    '<div class="hlpg"><h4>기록할 때</h4>'
+    + hlpRow("🖍","메모에 형광펜 칠하기","카드를 열어 메모를 쓸 때, 칠하고 싶은 글자를 드래그한 다음 <b>🖍 형광펜</b>을 누르면 노랗게 칠해져요. 같은 자리를 다시 누르면 지워집니다.")
+    + hlpRow("📥","빠른 메모 → 인박스","툴바의 <b>＋ 새 기록</b>은 한 줄만 적는 빠른 메모예요. 저장하면 <b>📥 인박스</b>에 쌓이고, 나중에 제대로 된 카드로 옮기면 됩니다. 처음부터 자세히 적고 싶으면 같은 화면의 <b>상세 카드로 쓸래요 →</b>를 누르세요.")
+    + hlpRow("♺","반복되는 할 일 자동 만들기","데일리 투두 맨 아래 <b>♺ 반복 루틴 관리</b>에서 요일을 정해두면 매일 아침 할 일이 저절로 생겨요. 쉬고 싶은 주에는 끄기만 하면 됩니다.")
+    + hlpRow("📤","계속 밀리는 할 일 옮기기","며칠째 미룬 할 일에는 <b>몇 번 밀렸어요</b> 안내가 붙어요. 거기서 <b>프로젝트로 옮기기</b>를 누르면 할 일이 프로젝트 카드로 바뀝니다.")
+    + '</div>'
+    + '<div class="hlpg"><h4>화면을 내 맘대로</h4>'
+    + hlpRow("⇅","순서 바꾸기","할 일은 손으로 끌어서 순서를 바꿔요. 탭은 <b>길게 눌러 끌거나</b>, 설정 → 사용할 탭 선택 → <b>순서 바꾸기</b>에서 화살표로 옮기면 됩니다.")
+    + hlpRow("✏️","탭 이름 바꾸기 · 지우기","설정 → <b>사용할 탭 선택</b>에서 탭 이름을 원하는 말로 바꾸고, 안 쓰는 탭은 숨기거나 지울 수 있어요. 지운 탭도 같은 화면에서 다시 만들 수 있습니다.")
+    + hlpRow("🔍","검색","툴바 검색창에 적으면 지금 보고 있는 탭의 카드를 걸러 보여줘요.")
+    + hlpRow("🌙","어두운 화면 · 홈 화면 설치","툴바의 <b>⋯</b> 안에 어둡게 바꾸기와 홈 화면에 추가가 들어 있어요. 설정에서도 같은 걸 할 수 있습니다.")
+    + '</div>'
+    + '<div class="hlpg"><h4>기록을 지키는 법</h4>'
+    + hlpRow("💾","백업은 파일 하나로","설정 → <b>파일 백업</b>에서 내려받은 JSON 파일 하나에 모든 기록이 들어 있어요. 새 기기에서는 같은 자리에서 그 파일을 고르면 그대로 되살아납니다.")
+    + hlpRow("🔔","오래 백업하지 않으면 알려줘요","2주가 넘으면 <b>⋯</b> 버튼에 빨간 점이 붙어요.")
+    + '</div>'
+    + '<div class="hlpegg">화면 왼쪽 위 동그란 그림을 톡톡 두드려 보세요 🌙<em>뭔가 하나 숨겨져 있어요</em></div>';
   document.getElementById("mSave").style.display="none";
   document.getElementById("overlay").classList.add("on");
 }
@@ -5366,7 +5413,8 @@ function onbRender(){
        + '<b>30초 체험하기</b><span>샘플 일정·할 일·기록이 채워진 상태로 둘러봐요.</span></button>'
        + '<button class="onbopt '+(ONB.sample?"":"on")+'" onclick="onbSample(false)">'
        + '<b>빈 노트로 시작하기</b><span>처음부터 내 내용만 채우고 싶을 때.</span></button>'
-       + '<p class="onbfine">기록은 현재 브라우저에 저장됩니다. 중요한 내용은 백업해 주세요.</p>';
+       + '<p class="onbfine">기록은 현재 브라우저에 저장됩니다. 중요한 내용은 백업해 주세요.<br>'
+       + '숨은 기능은 설정 안 <b>💡 이런 것도 있어요</b>에 모아뒀어요.</p>';
   }
   if(C)C.innerHTML='<img alt="" src="'+(CHAR[ch]||CHAR.logo)+'">';
   if(T)T.textContent=t;
