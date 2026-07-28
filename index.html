@@ -923,7 +923,7 @@ html[data-theme=dark] .fsz,html[data-theme=dark] .pjlk span.fchip{background:#1e
 .gsol{margin:10px 0 6px;padding-left:20px;font-size:12px;line-height:1.85;color:var(--muted)}
 .gsol b{color:var(--ink)}
 .gsorigin{display:inline-block;margin-top:3px;font-size:11px;background:#f2f5fa;border:1px solid var(--line);border-radius:7px;padding:2px 7px;word-break:break-all}
-/* --- 마중 캐릭터 --- */
+/* --- 캐릭터 --- */
 .ch{display:block;object-fit:contain;image-rendering:auto;-webkit-user-drag:none;user-select:none}
 .brand .logo{overflow:hidden;background:linear-gradient(160deg,#f3f7ee,#e4eddc);padding:2px}
 .brand .logo .ch{width:100%;height:100%}
@@ -1039,6 +1039,15 @@ html[data-theme=dark] .onbcard{background:var(--card)}
 .onbin:focus{border-color:var(--blue);background:#fff}
 html[data-theme=dark] .onbin:focus{background:var(--card)}
 .onbhint{margin:9px 2px 0;font-size:12px;color:var(--ink-3);line-height:1.55}
+.onbnote{border:1px solid var(--line);background:var(--blue-xl);border-radius:13px;padding:13px 14px}
+.onbnote p{margin:0 0 7px;font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.6;
+  padding-left:15px;position:relative;word-break:keep-all}
+.onbnote p:last-child{margin-bottom:0}
+.onbnote p:before{content:"·";position:absolute;left:4px;top:0;font-weight:900;color:var(--blue)}
+.onbfine{margin:11px 2px 0;font-size:11px;color:var(--ink-3);line-height:1.55;text-align:center;word-break:keep-all}
+.setreset{margin:14px 2px 2px;text-align:center;font-size:11.5px;font-weight:700;color:var(--muted);
+  cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;user-select:none}
+.setreset:hover{color:var(--danger)}
 .onbgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .onbpick{display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:13px;
   border:1.5px solid var(--line);background:var(--bg-2);cursor:pointer;text-align:left;
@@ -1168,41 +1177,6 @@ html[data-theme=dark] .foldbtn:hover{background:#1e2a3e}
 .setg .setd{font-size:11.5px;color:var(--muted);line-height:1.55;margin-bottom:9px;word-break:keep-all}
 .setg .setd.warn{color:#c0392b;font-weight:700}
 .setg .setb{display:flex;gap:7px;flex-wrap:wrap}
-/* ---- 개인 금고 ---- */
-.vhide{display:block;width:76px;margin:18px auto 4px;text-align:center;font-size:15px;letter-spacing:5px;
-  line-height:1;color:#8fa0ba;background:var(--blue-xl);border:1px solid var(--line);border-radius:999px;
-  cursor:pointer;user-select:none;-webkit-user-select:none;padding:9px 0 11px;
-  font-family:inherit;transition:all .15s}
-.vhide:hover,.vhide:active{color:var(--blue);border-color:var(--blue);background:#e7effd}
-.vwrap{display:flex;flex-direction:column;gap:9px}
-.vwarn{font-size:11.5px;color:var(--muted);line-height:1.6;background:var(--blue-xl);
-  border:1px solid var(--line);border-radius:11px;padding:11px 12px;word-break:keep-all}
-.vwarn b{color:var(--ink)}
-.vwarn.red{background:#fff6f6;border-color:#ffd7d7;color:#c0392b}
-.vwarn.red b{color:#c0392b}
-.vpin{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;
-  font-size:17px;font-weight:800;letter-spacing:6px;text-align:center;font-family:inherit;
-  color:var(--ink);background:var(--card);box-sizing:border-box}
-.vpin:focus{outline:none;border-color:var(--blue)}
-.vrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px 10px;
-  border:1px solid var(--line);border-radius:11px;background:var(--card);margin-bottom:7px}
-.vrow .vmain{flex:1 1 150px;min-width:0}
-.vsn{font-size:13px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vsi{font-size:11.5px;color:var(--muted);margin-top:2px;word-break:break-all}
-.vpw{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;font-weight:700;
-  color:var(--blue-d);margin-top:3px;word-break:break-all;letter-spacing:.5px}
-.vb{flex:none;border:1px solid var(--line);background:var(--card);border-radius:9px;
-  padding:5px 8px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit}
-.vb:hover{border-color:var(--blue);color:var(--blue)}
-.vb.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.vb.del:hover{border-color:var(--danger);color:var(--danger)}
-.vin{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:10px;font-size:13px;
-  font-family:inherit;color:var(--ink);background:var(--card);box-sizing:border-box;margin-bottom:6px}
-.vin:focus{outline:none;border-color:var(--blue)}
-.vempty{text-align:center;font-size:12px;color:var(--muted);padding:18px 0}
-.vforget{text-align:center;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;
-  padding:6px 0;text-decoration:underline;text-underline-offset:3px}
-.vforget:hover{color:var(--danger)}
 .gearwrap{position:relative;display:inline-flex}
 .gearwrap .bdot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;
   background:var(--danger);border:2px solid var(--card);display:none}
@@ -1314,12 +1288,6 @@ html[data-theme=dark] .titem .x{color:#cbd5e6}
 html[data-theme=dark] .titem .grip{color:#7a889e}
 html[data-theme=dark] .titem.dragging{background:#22304a;box-shadow:0 8px 20px rgba(0,0,0,.45)}
 html[data-theme=dark] .ttxin{color:#e6ecf6}
-html[data-theme=dark] .vhide{color:#7a889e;background:#1b2739;border-color:#2c3a55}
-html[data-theme=dark] .vhide:hover,html[data-theme=dark] .vhide:active{color:#9eb8f0;border-color:#3b6ad4;background:#22304a}
-html[data-theme=dark] .vrow{background:#1b2739;border-color:#2c3a52}
-html[data-theme=dark] .vin,html[data-theme=dark] .vpin{background:#1b2739;border-color:#2c3a52;color:#e6ecf6}
-html[data-theme=dark] .vb{background:#1b2739;border-color:#2c3a52;color:#b6c3d6}
-html[data-theme=dark] .vwarn.red{background:#3a1f22;border-color:#5c2b30;color:#ffb4b4}
 html[data-theme=dark] .vwarn.red b{color:#ffb4b4}
 html[data-theme=dark] .vpw{color:#8ab4ff}
 html[data-theme=dark] .addline.daily select{color:#8096b5;background:#1e2124}
@@ -2020,7 +1988,7 @@ function usedBefore(){
   try{
     for(let i=0;i<localStorage.length;i++){
       const k=localStorage.key(i)||"";
-      if(k===CONFIG.storeKey+"_theme"||k===CONFIG.storeKey+"_gsync"||k===CONFIG.storeKey+"_vault") return true;
+      if(k===CONFIG.storeKey+"_theme"||k===CONFIG.storeKey+"_gsync") return true;
       if(k.indexOf(CONFIG.storeKey)===0) return true;
     }
   }catch(e){}
@@ -3986,7 +3954,7 @@ function openDream(id){
   document.getElementById("mTitle").textContent=v?"꿈 수정":"＋ 새로운 꿈";
   document.getElementById("mForm").innerHTML=`
     <div class="field"><label>어떤 꿈이야?</label>
-      <input id="d_title" value="${esc(v?v.title:"")}" placeholder="예) 마중으로 팝업스토어 열기"></div>
+      <input id="d_title" value="${esc(v?v.title:"")}" placeholder="예) 팝업스토어 열기"></div>
     <div class="field"><label>사진 (최대 ${DMAX}장)</label>
       <div id="d_prev">${dThumbs()}</div>
       <input type="file" id="d_file" accept="image/*" multiple style="display:none" onchange="dreamFile(this)">
@@ -4695,7 +4663,7 @@ function openEdit(id){
   document.getElementById("overlay").classList.add("on");
   document.getElementById("f_title").focus();
 }
-function closeEdit(){try{vLock();}catch(e){}
+function closeEdit(){
   const _mf=document.getElementById("mForm");if(_mf)_mf.removeAttribute("data-vault");
   document.getElementById("overlay").classList.remove("on");editing=null;dayCur=null;document.getElementById("mSave").removeAttribute("data-ns");}
 function saveEdit(){
@@ -5094,7 +5062,7 @@ function renderInstall(){
 function installApp(){
   if(installEvt){installEvt.prompt();installEvt=null;setTimeout(renderInstall,400);return;}
   if(isIOS()){
-    alert("아이폰에서 홈화면에 추가하기\n\n1) 사파리 아래쪽 공유 버튼 (□↑) 누르기\n2) 목록에서 「홈 화면에 추가」 선택\n3) 오른쪽 위 「추가」\n\n그러면 마중 아이콘으로 앱처럼 열려요 :)");
+    alert("아이폰에서 홈화면에 추가하기\n\n1) 사파리 아래쪽 공유 버튼 (□↑) 누르기\n2) 목록에서 「홈 화면에 추가」 선택\n3) 오른쪽 위 「추가」\n\n그러면 "+CONFIG.appName+" 아이콘으로 앱처럼 열려요 :)");
     return;
   }
   alert("브라우저 메뉴(⋮)에서 「앱 설치」 또는 「홈 화면에 추가」를 눌러주세요.");
@@ -5126,10 +5094,11 @@ function renderBk(){
 function bkStale(){const l=DATA.__backup||"";return (!l)||(l<addDays(todayStr(),-14));}
 function openSettings(){
   const l=DATA.__backup||"";
+  const dk=(themeGet()==="dark");
   document.getElementById("mTitle").textContent="⚙ 설정";
   document.getElementById("mForm").innerHTML=`
     <div class="setg">
-      <div class="seth">💾 백업</div>
+      <div class="seth">💾 파일 백업</div>
       <div class="setd ${bkStale()?"warn":""}">${l?("마지막 백업: "+l):"아직 한 번도 백업하지 않았어요. 브라우저를 정리하면 전부 사라져요."}</div>
       <div class="setb">
         <button class="btn primary" onclick="closeEdit();exportJSON()">파일로 내보내기</button>
@@ -5137,243 +5106,37 @@ function openSettings(){
       </div>
     </div>
     <div class="setg">
-      <div class="seth">🔄 기기 간 동기화</div>
-      <div class="setd">구글 드라이브로 PC와 휴대폰 내용을 자동으로 맞춰요.</div>
-      <div class="setb"><button class="btn" onclick="closeEdit();openSync()">설정하기</button></div>
+      <div class="seth">📲 홈 화면에 추가</div>
+      <div class="setd">휴대폰 홈 화면에 올려두면 앱처럼 열려요.</div>
+      <div class="setb"><button class="btn" onclick="closeEdit();installApp()">추가하는 방법</button></div>
     </div>
     <div class="setg">
-      <div class="seth">🙋 내 이름</div>
+      <div class="seth">🎛 사용할 탭 선택</div>
+      <div class="setd">안 쓰는 탭은 꺼두고, 이름도 바꿀 수 있어요. 보이는 순서도 여기서 바꿔요.</div>
+      <div class="setb">
+        <button class="btn" onclick="closeEdit();openTabs()">켜고 끄기 · 이름 · 삭제</button>
+        <button class="btn" onclick="closeEdit();openOrder()">순서 바꾸기</button>
+      </div>
+    </div>
+    <div class="setg">
+      <div class="seth">🌙 다크모드</div>
+      <div class="setd">지금은 <b>${dk?"어두운 화면":"밝은 화면"}</b>이에요.</div>
+      <div class="setb"><button class="btn" onclick="toggleTheme();openSettings()">${dk?"밝게 바꾸기":"어둡게 바꾸기"}</button></div>
+    </div>
+    <div class="setg">
+      <div class="seth">🧑 이름 변경</div>
       <div class="setd">화면 곳곳에서 이렇게 불러요. 지금은 <b>${esc(ME())}</b>.</div>
       <div class="setb"><button class="btn" onclick="closeEdit();openName()">이름 바꾸기</button></div>
     </div>
     <div class="setg">
-      <div class="seth">🎛 탭 정리하기</div>
-      <div class="setd">안 쓰는 탭은 꺼두고, 이름도 바꿀 수 있어요. 필요 없는 탭은 아예 지울 수도 있어요.</div>
-      <div class="setb"><button class="btn" onclick="closeEdit();openTabs()">켜고 끄기 · 이름 바꾸기 · 삭제</button></div>
+      <div class="seth">⚙ 고급 동기화</div>
+      <div class="setd">구글 드라이브로 PC와 휴대폰 내용을 자동으로 맞춰요. 안 써도 괜찮아요.</div>
+      <div class="setb"><button class="btn" onclick="closeEdit();openSync()">설정하기</button></div>
     </div>
-    <div class="setg">
-      <div class="seth">⇅ 탭 순서</div>
-      <div class="setd">탭을 길게 눌러 끌어도 순서가 바뀌어요.</div>
-      <div class="setb"><button class="btn" onclick="closeEdit();openOrder()">순서 바꾸기</button></div>
-    </div>
-    <div class="setg danger">
-      <div class="seth">⚠ 초기화</div>
-      <div class="setd">모든 내용이 사라지고 샘플 데이터로 돌아가요. 되돌릴 수 없어요.</div>
-      <div class="setb"><button class="btn danger" onclick="closeEdit();resetAll()">샘플로 초기화</button></div>
-    </div>
-    <div class="vhide" title="눌러보세요" onclick="vJump()">· · ·</div>`;
+    <div class="setreset" onclick="closeEdit();resetAll()">모두 지우고 처음부터 시작하기</div>`;
   document.getElementById("mIc").innerHTML="⚙";
   document.getElementById("mSave").style.display="none";
   document.getElementById("overlay").classList.add("on");
-}
-
-/* ================= 개인 금고 (사이트별 아이디·비밀번호) =================
-   · DATA 와 완전히 분리된 별도 저장소에 보관 → 백업 파일·구글 동기화에 절대 포함되지 않음
-   · PIN 으로 만든 열쇠(PBKDF2 15만회)로 AES-GCM 암호화 → PIN 없이는 내용을 알 수 없음      */
-const VKEYNAME=CONFIG.storeKey+"_vault";
-let VKEY=null,VSALT=null,VLIST=null,vShow={},vEdit=null,vMsg="",vTimer=null;
-
-function vCrypto(){try{return (typeof crypto!=="undefined"&&crypto.subtle)?crypto.subtle:null;}catch(e){return null;}}
-function vRaw(){try{return localStorage.getItem(VKEYNAME);}catch(e){return null;}}
-function vHas(){return !!vRaw();}
-function vB64(buf){let s="",a=new Uint8Array(buf);for(let i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s);}
-function vBuf(b64){const s=atob(b64),a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a;}
-function vNewId(){return "v"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
-async function vDerive(pin,salt){
-  const c=vCrypto();
-  const base=await c.importKey("raw",new TextEncoder().encode(String(pin)),{name:"PBKDF2"},false,["deriveKey"]);
-  return await c.deriveKey({name:"PBKDF2",salt:salt,iterations:150000,hash:"SHA-256"},
-    base,{name:"AES-GCM",length:256},false,["encrypt","decrypt"]);
-}
-async function vPersist(){
-  if(!VKEY)return;
-  const iv=crypto.getRandomValues(new Uint8Array(12));
-  const data=new TextEncoder().encode(JSON.stringify(VLIST||[]));
-  const enc=await vCrypto().encrypt({name:"AES-GCM",iv:iv},VKEY,data);
-  try{localStorage.setItem(VKEYNAME,JSON.stringify({v:1,s:vB64(VSALT),i:vB64(iv),d:vB64(enc)}));}
-  catch(e){alert("저장 공간이 부족해 금고를 저장하지 못했어요.");}
-}
-function vTouch(){
-  if(vTimer)clearTimeout(vTimer);
-  vTimer=setTimeout(function(){ if(VKEY){vLock();vMsg="3분 동안 쓰지 않아 다시 잠갔어요.";vPaint();} },180000);
-}
-function vLock(){
-  VKEY=null;VLIST=null;VSALT=null;vShow={};vEdit=null;vMsg="";
-  if(vTimer){clearTimeout(vTimer);vTimer=null;}
-}
-function vJump(){closeEdit();setTimeout(openVault,110);}
-function openVault(){
-  vLock();
-  document.getElementById("mTitle").textContent="🔒 개인 금고";
-  document.getElementById("mIc").innerHTML="🔒";
-  const f=document.getElementById("mForm");
-  f.setAttribute("data-vault","1");
-  f.innerHTML=vHtml();
-  document.getElementById("mSave").style.display="none";
-  document.getElementById("overlay").classList.add("on");
-  vFocus();
-}
-function vPaint(){
-  const f=document.getElementById("mForm");
-  if(!f||f.getAttribute("data-vault")!=="1")return;
-  f.innerHTML=vHtml();
-  vFocus();
-}
-function vFocus(){
-  const f=document.getElementById("mForm");if(!f)return;
-  const a=f.querySelector("[data-focus]");if(a){try{a.focus();}catch(e){}}
-}
-function vFormHtml(it){
-  const nw=!it;
-  return `<div class="vrow" style="display:block">
-    <input class="vin" id="vfs" placeholder="사이트 이름 (예: 국민은행)" value="${nw?"":esc(it.site||"")}" autocomplete="off" data-focus>
-    <input class="vin" id="vfi" placeholder="아이디" value="${nw?"":esc(it.uid||"")}" autocomplete="off">
-    <input class="vin" id="vfp" placeholder="비밀번호" value="${nw?"":esc(it.pw||"")}" autocomplete="off">
-    <div style="display:flex;gap:7px">
-      <button class="btn primary" onclick="vSave('${nw?"__new":it.id}')">저장</button>
-      <button class="btn" onclick="vCancel()">취소</button>
-    </div>
-  </div>`;
-}
-function vHtml(){
-  const msg=vMsg?`<div class="vwarn red">${esc(vMsg)}</div>`:"";
-  if(!vCrypto())
-    return `<div class="vwarn red">이 브라우저에서는 암호 잠금을 쓸 수 없어요.<br>주소가 <b>https</b> 로 시작하는지 확인해 주세요.</div>`;
-  if(!VKEY){
-    if(!vHas())
-      return `<div class="vwrap">
-        <div class="vwarn">사이트마다 쓰는 아이디와 비밀번호를 이 기기 안에만 잠가서 보관해요.<br>
-        먼저 <b>숫자 4~6자리 PIN</b>을 정해 주세요. 이 PIN으로 내용을 암호로 잠그기 때문에
-        <b>PIN을 잊으면 되살릴 방법이 없어요.</b></div>
-        ${msg}
-        <input class="vpin" id="vp1" type="password" inputmode="numeric" maxlength="6" placeholder="새 PIN" autocomplete="off" data-focus>
-        <input class="vpin" id="vp2" type="password" inputmode="numeric" maxlength="6" placeholder="한 번 더" autocomplete="off"
-          onkeydown="if(event.key==='Enter'){event.preventDefault();vSetup()}">
-        <button class="btn primary" onclick="vSetup()">금고 만들기</button>
-      </div>`;
-    return `<div class="vwrap">
-      <div class="vwarn">PIN을 넣으면 금고가 열려요. 창을 닫거나 3분 동안 쓰지 않으면 저절로 다시 잠겨요.</div>
-      ${msg}
-      <input class="vpin" id="vp1" type="password" inputmode="numeric" maxlength="6" placeholder="PIN" autocomplete="off" data-focus
-        onkeydown="if(event.key==='Enter'){event.preventDefault();vUnlock()}">
-      <button class="btn primary" onclick="vUnlock()">열기</button>
-      <div class="vforget" onclick="vWipe()">PIN이 기억나지 않나요</div>
-    </div>`;
-  }
-  const list=VLIST||[];
-  const rows=list.map(it=>{
-    if(vEdit===it.id)return vFormHtml(it);
-    const sh=!!vShow[it.id];
-    return `<div class="vrow">
-      <div class="vmain">
-        <div class="vsn">${esc(it.site||"이름 없음")}</div>
-        <div class="vsi">${it.uid?esc(it.uid):"<span style=\"opacity:.5\">아이디 없음</span>"}</div>
-        <div class="vpw">${sh?(esc(it.pw||"")||"—"):"••••••••"}</div>
-      </div>
-      <button class="vb ${sh?"on":""}" onclick="vToggle('${it.id}')">${sh?"숨기기":"보기"}</button>
-      <button class="vb" onclick="vCopy('${it.id}','uid')">아이디 복사</button>
-      <button class="vb" onclick="vCopy('${it.id}','pw')">비번 복사</button>
-      <button class="vb" onclick="vPick('${it.id}')">수정</button>
-      <button class="vb del" onclick="vDel('${it.id}')">✕</button>
-    </div>`;
-  }).join("");
-  const add=(vEdit==="__new")?vFormHtml(null)
-    :`<button class="btn primary" onclick="vPick('__new')">+ 새로 추가</button>`;
-  return `<div class="vwrap">
-    ${msg}
-    <div>${rows||'<div class="vempty">아직 저장한 게 없어요.</div>'}</div>
-    ${add}
-    <div class="vwarn">이 내용은 <b>이 기기 브라우저에만</b> PIN으로 잠겨 저장돼요.
-      백업 파일이나 구글 동기화에는 <b>들어가지 않아요.</b> 기기를 바꾸면 다시 넣어야 해요.</div>
-    <div style="display:flex;gap:7px;flex-wrap:wrap">
-      <button class="btn" onclick="vChangePin()">PIN 바꾸기</button>
-      <button class="btn" onclick="vLock();vPaint()">지금 잠그기</button>
-      <button class="btn danger" onclick="vWipe()">금고 비우기</button>
-    </div>
-  </div>`;
-}
-async function vSetup(){
-  const a=((document.getElementById("vp1")||{}).value||"").trim();
-  const b=((document.getElementById("vp2")||{}).value||"").trim();
-  if(!/^[0-9]{4,6}$/.test(a)){vMsg="숫자 4~6자리로 정해 주세요.";vPaint();return;}
-  if(a!==b){vMsg="두 번 넣은 PIN이 서로 달라요.";vPaint();return;}
-  try{
-    VSALT=crypto.getRandomValues(new Uint8Array(16));
-    VKEY=await vDerive(a,VSALT);
-    VLIST=[];vMsg="";vEdit="__new";
-    await vPersist();vTouch();vPaint();
-    try{toast("🔒 금고를 만들었어요");}catch(e){}
-  }catch(e){vLock();vMsg="금고를 만들지 못했어요.";vPaint();}
-}
-async function vUnlock(){
-  const p=((document.getElementById("vp1")||{}).value||"").trim();
-  const raw=vRaw();if(!raw)return;
-  let o;try{o=JSON.parse(raw);}catch(e){vMsg="저장된 금고가 손상됐어요.";vPaint();return;}
-  try{
-    const salt=vBuf(o.s),key=await vDerive(p,salt);
-    const dec=await vCrypto().decrypt({name:"AES-GCM",iv:vBuf(o.i)},key,vBuf(o.d));
-    VSALT=salt;VKEY=key;VLIST=JSON.parse(new TextDecoder().decode(dec));vShow={};vEdit=null;vMsg="";
-    vTouch();vPaint();
-  }catch(e){VKEY=null;VLIST=null;vMsg="PIN이 맞지 않아요.";vPaint();}
-}
-function vPick(id){if(!VKEY)return;vEdit=id;vMsg="";vTouch();vPaint();}
-function vCancel(){vEdit=null;vMsg="";vTouch();vPaint();}
-function vToggle(id){if(!VKEY)return;vShow[id]=!vShow[id];vTouch();vPaint();}
-async function vSave(id){
-  if(!VKEY)return;
-  const g=x=>(((document.getElementById(x)||{}).value)||"").trim();
-  const site=g("vfs"),uid=g("vfi"),pw=g("vfp");
-  if(!site){vMsg="사이트 이름을 적어 주세요.";vPaint();return;}
-  if(id==="__new")VLIST.push({id:vNewId(),site:site,uid:uid,pw:pw});
-  else{const it=VLIST.find(x=>x.id===id);if(it){it.site=site;it.uid=uid;it.pw=pw;}}
-  vEdit=null;vMsg="";
-  await vPersist();vTouch();vPaint();
-  try{toast("🔒 저장했어요");}catch(e){}
-}
-async function vDel(id){
-  if(!VKEY)return;
-  const it=VLIST.find(x=>x.id===id);if(!it)return;
-  if(!confirm("'"+(it.site||"이 항목")+"' 을 금고에서 지울까요?\n되돌릴 수 없어요."))return;
-  VLIST=VLIST.filter(x=>x.id!==id);delete vShow[id];if(vEdit===id)vEdit=null;
-  await vPersist();vTouch();vPaint();
-}
-function vFallbackCopy(txt){
-  try{
-    const ta=document.createElement("textarea");
-    ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";
-    document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
-    return true;
-  }catch(e){return false;}
-}
-function vCopy(id,which){
-  if(!VKEY)return;
-  const it=VLIST.find(x=>x.id===id);if(!it)return;
-  const txt=(which==="pw"?it.pw:it.uid)||"";
-  if(!txt){try{toast("복사할 내용이 없어요");}catch(e){}return;}
-  const done=()=>{try{toast("📋 "+(which==="pw"?"비밀번호":"아이디")+"를 복사했어요");}catch(e){}};
-  vTouch();
-  if(navigator.clipboard&&navigator.clipboard.writeText)
-    navigator.clipboard.writeText(txt).then(done,function(){if(vFallbackCopy(txt))done();});
-  else if(vFallbackCopy(txt))done();
-}
-async function vChangePin(){
-  if(!VKEY)return;
-  const a=prompt("새 PIN (숫자 4~6자리)");if(a===null)return;
-  if(!/^[0-9]{4,6}$/.test(a.trim())){alert("숫자 4~6자리로 정해 주세요.");return;}
-  const b=prompt("한 번 더 넣어 주세요");if(b===null)return;
-  if(b.trim()!==a.trim()){alert("두 번 넣은 PIN이 서로 달라요.");return;}
-  VSALT=crypto.getRandomValues(new Uint8Array(16));
-  VKEY=await vDerive(a.trim(),VSALT);
-  await vPersist();vTouch();
-  alert("PIN을 바꿨어요 ✓");
-}
-function vWipe(){
-  if(!vHas())return;
-  if(!confirm("금고 안 내용이 전부 사라지고 PIN도 지워져요.\n되돌릴 수 없어요. 계속할까요?"))return;
-  if(!confirm("정말 지울까요? 마지막 확인이에요."))return;
-  try{localStorage.removeItem(VKEYNAME);}catch(e){}
-  vLock();vPaint();
-  try{toast("금고를 비웠어요");}catch(e){}
 }
 
 /* ---- 백업 ---- */
@@ -5410,7 +5173,7 @@ function renderBrand(){
 /* ===== 첫 실행 안내 마법사 ===== */
 let ONB={mode:"full",step:0,name:"",tabs:null,sample:true,names:{},del:[],undel:[]};
 const ONBSTEPS={
-  full:["name","tabs","sample"],
+  full:["intro","name","sample"],
   name:["name"],
   tabs:["tabs"]
 };
@@ -5548,7 +5311,16 @@ function onbRender(){
         dots=document.getElementById("onbDots"),
         back=document.getElementById("onbBack"),next=document.getElementById("onbNext");
   let ch="logo",t="",d="",body="";
-  if(cur==="name"){
+  if(cur==="intro"){
+    ch="logo";
+    t="내 삶을 한곳에 정리하는 "+CONFIG.appName;
+    d="할 일·프로젝트·독서·운동·콘텐츠 기록을 한 화면에서. 회원가입도, 월 결제도 없어요.";
+    body='<div class="onbnote">'
+       + '<p>가입 없이 바로 사용할 수 있어요.</p>'
+       + '<p>기록은 현재 기기의 브라우저에 저장됩니다.</p>'
+       + '<p>중요한 기록은 설정에서 주기적으로 백업해 주세요.</p>'
+       + '</div>';
+  }else if(cur==="name"){
     ch="logo";
     t=ONB.mode==="name"?"이름 바꾸기":"만나서 반가워요";
     d="화면 곳곳에서 이렇게 불러 드릴게요. 나중에 설정에서 언제든 바꿀 수 있어요.";
@@ -5591,9 +5363,10 @@ function onbRender(){
     t="어떻게 시작할까요?";
     d="예시로 시작하면 앱이 어떻게 쓰이는지 바로 보여요. 언제든 전부 지울 수 있어요.";
     body='<button class="onbopt '+(ONB.sample?"on":"")+'" onclick="onbSample(true)">'
-       + '<b>예시로 둘러보기</b><span>샘플 일정·할 일·기록이 채워진 상태로 시작해요.</span></button>'
+       + '<b>30초 체험하기</b><span>샘플 일정·할 일·기록이 채워진 상태로 둘러봐요.</span></button>'
        + '<button class="onbopt '+(ONB.sample?"":"on")+'" onclick="onbSample(false)">'
-       + '<b>빈 상태로 시작</b><span>처음부터 내 내용만 채우고 싶을 때.</span></button>';
+       + '<b>빈 노트로 시작하기</b><span>처음부터 내 내용만 채우고 싶을 때.</span></button>'
+       + '<p class="onbfine">기록은 현재 브라우저에 저장됩니다. 중요한 내용은 백업해 주세요.</p>';
   }
   if(C)C.innerHTML='<img alt="" src="'+(CHAR[ch]||CHAR.logo)+'">';
   if(T)T.textContent=t;
@@ -5605,8 +5378,8 @@ function onbRender(){
     back.textContent=ONB.step>0?"이전":(ONB.mode==="full"?"":"취소");
     back.style.visibility=(ONB.step>0||ONB.mode!=="full")?"visible":"hidden";
   }
-  if(next)next.textContent=(ONB.step>=steps.length-1)
-    ? (ONB.mode==="full"?"시작하기":"저장") : "다음";
+  if(next)next.textContent=(cur==="intro")?"확인하고 시작하기"
+    : ((ONB.step>=steps.length-1) ? (ONB.mode==="full"?"시작하기":"저장") : "다음");
   if(cur==="name"){ const i=document.getElementById("onbName"); if(i)setTimeout(()=>{try{i.focus();}catch(e){}},60); }
 }
 function onbGo(dir){
@@ -5654,7 +5427,7 @@ function onbFinish(){
   }
   if(!DATA.__ui)DATA.__ui={};
   if(ONB.mode==="full"||ONB.mode==="name")DATA.__ui.owner=String(ONB.name||"").trim();
-  if(ONB.mode==="full"||ONB.mode==="tabs")onbApplyTabs();
+  if(ONB.mode==="tabs")onbApplyTabs();
   DATA.__ui.setup=true;
   const ks=tabKeys();
   if(ks.indexOf(cur)<0)cur=ks[0]||"daily";
