@@ -1047,6 +1047,29 @@ html[data-theme=dark] .onbin:focus{background:var(--card)}
 .onbpick.on{border-color:var(--blue);background:var(--blue-l);color:var(--blue-d)}
 .onbpick .tick{margin-left:auto;font-size:12px;color:var(--blue);opacity:0}
 .onbpick.on .tick{opacity:1}
+.tbrow{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:13px;
+  border:1.5px solid var(--line);background:var(--bg-2);margin:0 0 8px}
+.tbrow.on{border-color:var(--blue);background:var(--blue-l)}
+.tbrow.off{opacity:.66}
+.tbrow.gone{opacity:.6;border-style:dashed}
+.tbtog{flex:1 1 auto;display:flex;align-items:center;gap:8px;min-width:0;padding:7px 4px;
+  border:0;background:transparent;cursor:pointer;text-align:left;font-family:inherit;color:var(--ink)}
+.tbtog .chf{width:26px;height:26px;flex:0 0 26px}
+.tbtog b{font-size:13.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbrow.gone .tbtog b{text-decoration:line-through}
+.tbst{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--ink-3);flex:0 0 auto;padding-left:6px}
+.tbrow.on .tbst{color:var(--blue-d)}
+.tbmini{flex:0 0 auto;padding:8px 9px;border-radius:10px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--ink);font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.tbmini.danger{color:#b42318;border-color:#f0c6c1}
+html[data-theme=dark] .tbmini.danger{color:#ffb4ab;border-color:#5d2b26}
+.tbsub{margin:14px 2px 8px;font-size:12px;font-weight:800;color:var(--ink-3)}
+@media(max-width:400px){
+  .tbrow{gap:4px;padding:5px 6px}
+  .tbtog{gap:6px}
+  .tbst{font-size:10.5px;padding-left:4px}
+  .tbmini{padding:8px 7px;font-size:11px}
+}
 .onbopt{display:block;width:100%;box-sizing:border-box;text-align:left;padding:14px 15px;
   border-radius:14px;border:1.5px solid var(--line);background:var(--bg-2);cursor:pointer;
   margin-bottom:9px;font-family:inherit}
@@ -2020,7 +2043,8 @@ function normalize(d){
   const meta={};                    // __ui · __inbox · __off 같은 설정값 보존
   Object.keys(d).forEach(k=>{ if(k.indexOf("__")===0) meta[k]=d[k]; });
   const m={};                       // SEED 순서 유지 + 새로 생긴 탭 자동 추가
-  Object.keys(SEED).forEach(k=>{ m[k]= d[k] || JSON.parse(JSON.stringify(SEED[k])); });
+  const del=Array.isArray(d.__del)?d.__del:[];        // 사용자가 지운 탭은 되살리지 않음
+  Object.keys(SEED).forEach(k=>{ if(del.indexOf(k)>=0)return; m[k]= d[k] || JSON.parse(JSON.stringify(SEED[k])); });
   Object.keys(d).forEach(k=>{ if(k.indexOf("__")!==0 && !m[k]) m[k]=d[k]; });
   d=m;
   Object.keys(d).forEach(k=>{
@@ -2236,7 +2260,7 @@ function endDrag(){
 }
 
 /* ---- 데일리 투두 ---- */
-function ds(){return DATA.daily;}
+function ds(){return DATA.daily||{cats:[],days:{},skip:{},routines:[],items:[]};}
 function catOf(id){const s=ds();return (s.cats||[]).find(c=>c.id===id)||{id:id,name:"기타",color:"#94a3b8"};}
 function dayTodos(k){return (ds().days||{})[k]||[];}
 function dayRate(k){
@@ -2544,6 +2568,7 @@ function rollKeep(id){
 }
 function rollToProject(id){
   const t=rollFind(id); if(!t) return;
+  if(!DATA.project){ try{toast("프로젝트 탭이 없어요");}catch(e){} return; }
   const o={id:uid(),title:t.text,tag:(DATA.project.tags||[])[0]||"개인",status:"할일",progress:0,
     start:todayStr(),due:"",owner:"나",goal:"",
     desc:"데일리 투두에서 "+(+t.roll||0)+"번 밀려서 옮겨온 일",
@@ -2802,7 +2827,7 @@ function dailyView(){ syncRoutines(daySel); autoRoll(); return weekStrip()+daily
 
 /* ---- 인플루언서(muse) 탭 ---- */
 function statusList(){return DATA[cur]&&DATA[cur].type==="muse"?MSTATUS:STATUSES;}
-function ms(){return DATA.muse;}
+function ms(){return DATA.muse||{items:[],followers:{cur:0,goal:10000},history:[],monthGoal:{},tags:[]};}
 function nfm(n){n=+n||0;return n>=10000?(n/10000).toFixed(n%10000?1:0).replace(/\.0$/,"")+"만":n.toLocaleString("ko-KR");}
 function inMonth(d){return d&&d.slice(0,7)===calY+"-"+String(calM+1).padStart(2,"0");}
 function museAgg(){
@@ -3213,8 +3238,11 @@ function cheerMsg(){
 const SHORT={project:"프로젝트",work:"업무",daily:"투두",book:"독서",habit:"운동",muse:"브랜드",estate:"부동산",dream:"꿈"};
 function renderTabs(){
   document.getElementById("tabs").innerHTML=tabKeys().map(k=>{
-    const full=esc(DATA[k].label.replace(/^\S+\s/,""));
-    return `<button class="tab ${k===cur?"on":""}" data-k="${k}" onclick="go('${k}')" onpointerdown="tabDown(event,'${k}')">${chFace(k)}<span class="tfull">${full}</span><span class="tshort">${esc(SHORT[k]||full)}</span></button>`;
+    const nm=String(DATA[k].label||k).replace(/^\S+\s/,"");
+    const base=String((SEED[k]&&SEED[k].label)||k).replace(/^\S+\s/,"");
+    const full=esc(nm);
+    const short=esc(nm===base?(SHORT[k]||nm):nm);   // 이름을 바꿨으면 줄임말 대신 바꾼 이름
+    return `<button class="tab ${k===cur?"on":""}" data-k="${k}" onclick="go('${k}')" onpointerdown="tabDown(event,'${k}')">${chFace(k)}<span class="tfull">${full}</span><span class="tshort">${short}</span></button>`;
   }).join("");
 }
 function go(k){if(noClick)return;cur=k;filter="ALL";document.getElementById("q").value="";render();}
@@ -3718,7 +3746,7 @@ function eStudy(k){
   return f||CURRI[eIdx(k)];
 }
 function eNews(k){return FEEDGET("estate."+k+".news",null)||[];}
-function eRead(){const s=DATA.estate;s.read=s.read||{};return s.read;}
+function eRead(){const s=DATA.estate||{};s.read=s.read||{};return s.read;}
 function togRead(){
   const k=esDay(),r=eRead();
   if(r[k])delete r[k];else r[k]=1;
@@ -4077,7 +4105,7 @@ const NSAUTO={
   daily_done:"완료한 할 일 수"
 };
 function ns(){
-  const p=DATA.project;
+  const p=DATA.project||{};
   if(!p.north)p.north={year:2026,statement:"",why:"",goals:[],q:{}};
   const n=p.north;
   n.year=+n.year||2026;
@@ -5119,9 +5147,9 @@ function openSettings(){
       <div class="setb"><button class="btn" onclick="closeEdit();openName()">이름 바꾸기</button></div>
     </div>
     <div class="setg">
-      <div class="seth">🎛 쓸 탭 고르기</div>
-      <div class="setd">안 쓰는 탭은 꺼두세요. 내용은 지워지지 않고 숨겨지기만 해요.</div>
-      <div class="setb"><button class="btn" onclick="closeEdit();openTabs()">탭 켜고 끄기</button></div>
+      <div class="seth">🎛 탭 정리하기</div>
+      <div class="setd">안 쓰는 탭은 꺼두고, 이름도 바꿀 수 있어요. 필요 없는 탭은 아예 지울 수도 있어요.</div>
+      <div class="setb"><button class="btn" onclick="closeEdit();openTabs()">켜고 끄기 · 이름 바꾸기 · 삭제</button></div>
     </div>
     <div class="setg">
       <div class="seth">⇅ 탭 순서</div>
@@ -5380,13 +5408,89 @@ function renderBrand(){
 }
 
 /* ===== 첫 실행 안내 마법사 ===== */
-let ONB={mode:"full",step:0,name:"",tabs:null,sample:true};
+let ONB={mode:"full",step:0,name:"",tabs:null,sample:true,names:{},del:[],undel:[]};
 const ONBSTEPS={
   full:["name","tabs","sample"],
   name:["name"],
   tabs:["tabs"]
 };
-function onbTabList(){ return Object.keys(SEED).filter(k=>!(SEED[k]&&SEED[k].secret)); }
+function onbDelList(){ try{ return (DATA&&Array.isArray(DATA.__del))?DATA.__del.slice():[]; }catch(e){ return []; } }
+function onbTabList(){
+  const gone=onbDelList().filter(k=>(ONB.undel||[]).indexOf(k)<0);
+  const a=Object.keys(SEED).filter(k=>!(SEED[k]&&SEED[k].secret)&&gone.indexOf(k)<0);
+  try{
+    Object.keys(DATA).forEach(k=>{                 // SEED에 없는 직접 만든 탭도 포함
+      if(k.indexOf("__")===0||SEED[k]||a.indexOf(k)>=0)return;
+      if(DATA[k]&&DATA[k].secret)return;
+      a.push(k);
+    });
+  }catch(e){}
+  return a;
+}
+/* 다시 만들 수 있는(지워둔) 탭 목록 */
+function onbGoneList(){ return onbDelList().filter(k=>SEED[k]&&(ONB.undel||[]).indexOf(k)<0); }
+function onbSeedName(k){ return String((SEED[k]&&SEED[k].label)||k).replace(/^\S+\s/,""); }
+function onbCurName(k){
+  try{ if(ONB&&ONB.names&&ONB.names[k]) return String(ONB.names[k]); }catch(e){}
+  let l=null;
+  try{ l=(DATA&&DATA[k]&&DATA[k].label)||null; }catch(e){}
+  return String(l||(SEED[k]&&SEED[k].label)||k).replace(/^\S+\s/,"");
+}
+/* 이름 앞 이모지는 그대로 두고 뒤 이름만 갈아끼운다 */
+function onbRelabel(k,nm){
+  let cl="";
+  try{ cl=String((DATA[k]&&DATA[k].label)||(SEED[k]&&SEED[k].label)||""); }catch(e){}
+  const m=/^(\S+)\s/.exec(cl);
+  return (m?m[1]:"📌")+" "+nm;
+}
+function onbRename(k){
+  const now=onbCurName(k);
+  let v=null;
+  try{ v=prompt("이 탭을 뭐라고 부를까요?\n(비우고 확인하면 원래 이름으로 돌아가요)",now); }catch(e){ v=null; }
+  if(v===null)return;
+  v=String(v).replace(/\s+/g," ").trim().slice(0,14);
+  if(!ONB.names)ONB.names={};
+  ONB.names[k]=v||onbSeedName(k);
+  onbRender();
+}
+function onbDel(k){
+  if(!ONB.del)ONB.del=[];
+  if(ONB.del.indexOf(k)>=0)return;
+  const left=onbTabList().filter(x=>ONB.del.indexOf(x)<0);
+  if(left.length<=1){ try{toast("탭은 하나 이상 남아 있어야 해요");}catch(e){} return; }
+  let ok=false;
+  try{ ok=confirm("'"+onbCurName(k)+"' 탭을 지울까요?\n\n이 탭에 적어둔 기록도 같이 사라져요.\n저장을 누르기 전이라면 되돌릴 수 있어요."); }catch(e){ ok=false; }
+  if(!ok)return;
+  ONB.del.push(k);
+  const i=ONB.tabs.indexOf(k); if(i>=0)ONB.tabs.splice(i,1);
+  onbRender();
+}
+function onbUndel(k){
+  if(!ONB.del)return;
+  const i=ONB.del.indexOf(k); if(i<0)return;
+  ONB.del.splice(i,1);
+  if(ONB.tabs.indexOf(k)<0)ONB.tabs.push(k);
+  onbRender();
+}
+/* 예전에 지운 탭을 빈 상태로 다시 만들기 */
+function onbRestore(k){
+  if(!ONB.undel)ONB.undel=[];
+  if(ONB.undel.indexOf(k)<0)ONB.undel.push(k);
+  if(ONB.tabs.indexOf(k)<0)ONB.tabs.push(k);
+  onbRender();
+}
+function onbBlankTab(k){
+  const s=JSON.parse(JSON.stringify(SEED[k]));
+  if(s.items)s.items=[];
+  if(s.days)s.days={};
+  if(s.entries)s.entries={};
+  if(s.routines)s.routines=[];
+  if(s.history)s.history=[];
+  if("week" in s)s.week=null;
+  if(s.followers)s.followers={cur:0,goal:1000};
+  if(s.north){s.north.statement="";s.north.why="";s.north.q={1:"",2:"",3:"",4:""};s.north.goals=[];}
+  return s;
+}
 function onbLabel(k){ return String((SEED[k]&&SEED[k].label)||k).replace(/^\S+\s/,""); }
 function blankData(){
   const d=JSON.parse(JSON.stringify(SEED));
@@ -5409,7 +5513,8 @@ function onbStart(mode){
     step:0,
     name:(DATA&&DATA.__ui&&DATA.__ui.owner)||CONFIG.owner||"",
     tabs:null,
-    sample:CONFIG.sample!==false
+    sample:CONFIG.sample!==false,
+    names:{}, del:[], undel:[]
   };
   const off=(DATA&&Array.isArray(DATA.__off))?DATA.__off:[];
   ONB.tabs=onbTabList().filter(k=>off.indexOf(k)<0);
@@ -5451,12 +5556,36 @@ function onbRender(){
        + '<p class="onbhint">비워두고 넘어가도 괜찮아요.</p>';
   }else if(cur==="tabs"){
     ch="project";
-    t="어떤 걸 기록할까요?";
-    d="필요한 것만 켜 두세요. 나중에 설정에서 다시 켜고 끌 수 있어요.";
-    body='<div class="onbgrid">'+onbTabList().map(k=>
-      '<button class="onbpick '+(ONB.tabs.indexOf(k)>=0?"on":"")+'" onclick="onbToggle(\''+k+'\')">'
-      + chFace(k)+'<span>'+esc(onbLabel(k))+'</span><span class="tick">✓</span></button>').join("")
-      +'</div>';
+    const mng=(ONB.mode==="tabs");                  // 설정에서 들어왔을 때만 편집 가능
+    t=mng?"탭 정리하기":"어떤 걸 기록할까요?";
+    d=mng?"켜고 끄기 · 이름 바꾸기 · 삭제를 여기서 할 수 있어요."
+         :"필요한 것만 켜 두세요. 나중에 설정에서 다시 켜고 끌 수 있어요.";
+    if(!mng){
+      body='<div class="onbgrid">'+onbTabList().map(k=>
+        '<button class="onbpick '+(ONB.tabs.indexOf(k)>=0?"on":"")+'" onclick="onbToggle(\''+k+'\')">'
+        + chFace(k)+'<span>'+esc(onbLabel(k))+'</span><span class="tick">✓</span></button>').join("")
+        +'</div>';
+    }else{
+      body=onbTabList().map(k=>{
+        const gone=(ONB.del||[]).indexOf(k)>=0, on=ONB.tabs.indexOf(k)>=0;
+        if(gone) return '<div class="tbrow gone">'
+          + '<span class="tbtog">'+chFace(k)+'<b>'+esc(onbCurName(k))+'</b><span class="tbst">삭제 예정</span></span>'
+          + '<button class="tbmini" onclick="onbUndel(\''+k+'\')">↩ 되돌리기</button></div>';
+        return '<div class="tbrow '+(on?"on":"off")+'">'
+          + '<button class="tbtog" onclick="onbToggle(\''+k+'\')">'+chFace(k)
+          + '<b>'+esc(onbCurName(k))+'</b><span class="tbst">'+(on?"보임 ✓":"숨김")+'</span></button>'
+          + '<button class="tbmini" onclick="onbRename(\''+k+'\')">✏️ 이름</button>'
+          + '<button class="tbmini danger" onclick="onbDel(\''+k+'\')">🗑 삭제</button></div>';
+      }).join("");
+      const gl=onbGoneList();
+      if(gl.length) body+='<div class="tbsub">지워둔 탭</div>'
+        + gl.map(k=>'<div class="tbrow gone">'
+          + '<span class="tbtog">'+chFace(k)+'<b>'+esc(onbSeedName(k))+'</b><span class="tbst">없음</span></span>'
+          + '<button class="tbmini" onclick="onbRestore(\''+k+'\')">＋ 다시 만들기</button></div>').join("");
+      body+='<p class="onbhint"><b>보임 / 숨김</b> — 눌러서 바꿔요. 숨겨도 기록은 그대로 보관돼요.<br>'
+          + '<b>✏️ 이름</b> — 탭 이름을 내 맘대로 바꿔요.<br>'
+          + '<b>🗑 삭제</b> — 탭과 그 안의 기록까지 사라져요. <b>저장</b>을 누르기 전엔 되돌릴 수 있어요.</p>';
+    }
   }else{
     ch="daily";
     t="어떻게 시작할까요?";
@@ -5491,8 +5620,33 @@ function onbGo(dir){
   onbFinish();
 }
 function onbApplyTabs(){
-  const off=onbTabList().filter(k=>ONB.tabs.indexOf(k)<0);
-  DATA.__off=off;
+  const del=Array.isArray(ONB.del)?ONB.del.slice():[];
+  const undel=Array.isArray(ONB.undel)?ONB.undel.slice():[];
+  let gone=onbDelList();
+  /* (1) 지워둔 탭 다시 만들기 */
+  undel.forEach(k=>{
+    if(!SEED[k])return;
+    gone=gone.filter(x=>x!==k);
+    if(!DATA[k]){ try{DATA[k]=onbBlankTab(k);}catch(e){} }
+    if(Array.isArray(DATA.__order)&&DATA.__order.indexOf(k)<0) DATA.__order.push(k);
+  });
+  /* (2) 이름 바꾸기 */
+  const names=ONB.names||{};
+  Object.keys(names).forEach(k=>{
+    if(!DATA[k]||del.indexOf(k)>=0)return;
+    const nm=String(names[k]||"").trim();
+    if(!nm)return;
+    DATA[k].label=onbRelabel(k,nm);
+  });
+  /* (3) 삭제 — 기록까지 지우고, 다시 생기지 않게 표시 */
+  del.forEach(k=>{
+    if(gone.indexOf(k)<0)gone.push(k);
+    try{delete DATA[k];}catch(e){}
+  });
+  DATA.__del=gone;
+  if(Array.isArray(DATA.__order)) DATA.__order=DATA.__order.filter(k=>del.indexOf(k)<0);
+  /* (4) 보임/숨김 */
+  DATA.__off=onbTabList().filter(k=>ONB.tabs.indexOf(k)<0&&del.indexOf(k)<0);
 }
 function onbFinish(){
   if(ONB.mode==="full"){
