@@ -92,6 +92,52 @@ a{color:var(--blue)}
 .tab[data-k="daily"]::after{content:"";width:5px;height:5px;border-radius:50%;background:#f6538d;
   display:inline-block;margin-left:5px;vertical-align:middle}
 .tab[data-k="daily"].on::after{background:#fff}
+
+/* 탭별 고유 색 (선택했을 때 화면 성격이 바뀐다) */
+.tab[data-k="project"]:hover{border-color:#acc4f7;color:#2563eb}
+.tab[data-k="project"].on{background:linear-gradient(135deg,#4c7fef,#2563eb);border-color:#2563eb;color:#fff;box-shadow:0 6px 18px rgba(37,99,235,.30)}
+html[data-theme=dark] .tab[data-k="project"]:hover{background:rgba(37,99,235,.14)}
+.tab[data-k="work"]:hover{border-color:#a3cede;color:#0e7fa8}
+.tab[data-k="work"].on{background:linear-gradient(135deg,#3996b8,#0e7fa8);border-color:#0e7fa8;color:#fff;box-shadow:0 6px 18px rgba(14,127,168,.30)}
+html[data-theme=dark] .tab[data-k="work"]:hover{background:rgba(14,127,168,.14)}
+.tab[data-k="book"]:hover{border-color:#cebff1;color:#7f56d9}
+.tab[data-k="book"].on{background:linear-gradient(135deg,#9674e0,#7f56d9);border-color:#7f56d9;color:#fff;box-shadow:0 6px 18px rgba(127,86,217,.30)}
+html[data-theme=dark] .tab[data-k="book"]:hover{background:rgba(127,86,217,.14)}
+.tab[data-k="habit"]:hover{border-color:#a7dbc0;color:#17a05a}
+.tab[data-k="habit"].on{background:linear-gradient(135deg,#41b178,#17a05a);border-color:#17a05a;color:#fff;box-shadow:0 6px 18px rgba(23,160,90,.30)}
+html[data-theme=dark] .tab[data-k="habit"]:hover{background:rgba(23,160,90,.14)}
+.tab[data-k="estate"]:hover{border-color:#e1cca9;color:#b07a1c}
+.tab[data-k="estate"].on{background:linear-gradient(135deg,#be9245,#b07a1c);border-color:#b07a1c;color:#fff;box-shadow:0 6px 18px rgba(176,122,28,.30)}
+html[data-theme=dark] .tab[data-k="estate"]:hover{background:rgba(176,122,28,.14)}
+.tab[data-k="muse"]:hover{border-color:#e8b6da;color:#c2409e}
+.tab[data-k="muse"].on{background:linear-gradient(135deg,#cd62af,#c2409e);border-color:#c2409e;color:#fff;box-shadow:0 6px 18px rgba(194,64,158,.30)}
+html[data-theme=dark] .tab[data-k="muse"]:hover{background:rgba(194,64,158,.14)}
+.tab[data-k="dream"]:hover{border-color:#c0bced;color:#5a4fcf}
+.tab[data-k="dream"].on{background:linear-gradient(135deg,#786fd8,#5a4fcf);border-color:#5a4fcf;color:#fff;box-shadow:0 6px 18px rgba(90,79,207,.30)}
+html[data-theme=dark] .tab[data-k="dream"]:hover{background:rgba(90,79,207,.14)}
+body{--acc:#2563eb;--accw:#e9effd}
+body[data-cur="daily"]{--acc:#e8558e;--accw:#fdeef4}
+body[data-cur="project"]{--acc:#2563eb;--accw:#e9effd}
+body[data-cur="work"]{--acc:#0e7fa8;--accw:#e7f2f6}
+body[data-cur="book"]{--acc:#7f56d9;--accw:#f2eefb}
+body[data-cur="habit"]{--acc:#17a05a;--accw:#e8f6ef}
+body[data-cur="estate"]{--acc:#b07a1c;--accw:#f7f2e8}
+body[data-cur="muse"]{--acc:#c2409e;--accw:#f9ecf5}
+body[data-cur="dream"]{--acc:#5a4fcf;--accw:#efedfa}
+body[data-cur="base"]{--acc:#2563eb;--accw:#e9effd}
+body[data-cur="logo"]{--acc:#2563eb;--accw:#e9effd}
+/* 히어로: 진행률 링 */
+.hring{position:absolute;left:0;top:0;width:100%;height:100%;transform:rotate(-90deg)}
+.hring .hrt{fill:none;stroke:var(--line);stroke-width:3.1}
+.hring .hrp{fill:none;stroke:var(--acc);stroke-width:3.1;stroke-linecap:round;
+  transition:stroke-dashoffset .5s cubic-bezier(.4,0,.2,1)}
+.hrin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:1px;line-height:1}
+.hrin b{font-size:27px;font-weight:800;letter-spacing:-.045em;color:var(--ink)}
+.hrin b i{font-size:14px;font-weight:700;font-style:normal;color:var(--acc);margin-left:1px}
+.hrin span{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:-.01em}
+@media(max-width:660px){.hrin b{font-size:21px}.hrin b i{font-size:11px}.hrin span{font-size:9.5px}}
+@media(max-width:720px){.hrin b{font-size:19px}.hrin span{font-size:9.5px}}
 /* board */
 .board{padding:18px 24px 28px}
 .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
@@ -929,8 +975,7 @@ html[data-theme=dark] .fsz,html[data-theme=dark] .pjlk span.fchip{background:#1e
 .brand .logo .ch{width:100%;height:100%}
 .hero{display:flex;align-items:flex-end;gap:16px;position:relative}
 .hero .htxt{flex:1;min-width:0}
-.heroch{flex:none;width:104px;height:104px;margin-bottom:-6px;position:relative;
-  filter:drop-shadow(0 10px 20px rgba(15,27,51,.10));animation:bob 5.4s ease-in-out infinite}
+.heroch{flex:none;width:104px;height:104px;margin-bottom:-6px;position:relative}
 .heroch .ch{width:104px;height:104px}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .tab{display:inline-flex;align-items:center;gap:7px;padding:7px 15px 7px 7px}
@@ -1727,16 +1772,16 @@ html[data-theme=dark] .statmore:hover{background:#1e2a3e}
    1) 여기만 고치면 됩니다 — 샘플 데이터
    =========================================================== */
 const CHAR={
-  daily:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%223.4%22%2F%3E%3Cpath%20d%3D%22M8%2012.6l3%203%205.6-6.2%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  logo:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%228.4%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%223.7%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  base:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203.4l8.4%204.2-8.4%204.2-8.4-4.2z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M3.6%2012.2L12%2016.4l8.4-4.2%22%2F%3E%3Cpath%20d%3D%22M3.6%2016.6L12%2020.8l8.4-4.2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  project:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%2021V4%22%2F%3E%3Cpath%20d%3D%22M7%205h11l-2.2%203.4L18%2012H7z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  work:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222.7%22%20y%3D%227.6%22%20width%3D%2218.6%22%20height%3D%2212.5%22%20rx%3D%222.7%22%2F%3E%3Cpath%20d%3D%22M9%207.6V6a1.9%201.9%200%200%201%201.9-1.9h2.2A1.9%201.9%200%200%201%2015%206v1.6%22%2F%3E%3Cpath%20d%3D%22M2.9%2012.7h18.2%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  book:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%207.2v12.6%22%2F%3E%3Cpath%20d%3D%22M12%207.2C10.6%205.8%208.4%205.2%206%205.2H3.7v11.9H6c2.4%200%204.6.6%206%202%22%2F%3E%3Cpath%20d%3D%22M12%207.2c1.4-1.4%203.6-2%206-2h2.3v11.9H18c-2.4%200-4.6.6-6%202%22%20stroke%3D%22%232563eb%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  habit:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2.6%2013h3.3l1.9-4.7%202.7%209.4%202-4.7h3.1%22%2F%3E%3Ccircle%20cx%3D%2219.4%22%20cy%3D%2213%22%20r%3D%222.2%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  estate:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.3%2011.1L12%204.3l8.7%206.8%22%2F%3E%3Cpath%20d%3D%22M5.5%2011.4V20h13v-8.6%22%2F%3E%3Cpath%20d%3D%22M9.9%2020v-5.2h4.2V20%22%20stroke%3D%22%232563eb%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  muse:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%202.9l1.9%205.2L17%2010l-5.1%201.9L10%2017.1%208.1%2011.9%203%2010l5.1-1.9z%22%20fill%3D%22%233d4a63%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M17.7%2014.1l.9%202.4%202.4.9-2.4.9-.9%202.4-.9-2.4-2.4-.9%202.4-.9z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
-  dream:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5f9ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e3ebf7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233d4a63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M21%2012.79A9%209%200%201%201%2011.21%203%207%207%200%200%200%2021%2012.79z%22%20fill%3D%22%233d4a63%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M5.2%2015.4l.7%201.9%201.9.7-1.9.7-.7%201.9-.7-1.9L2.6%2018l1.9-.7z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+  daily:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fef6f9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fce6ef%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%23a23b63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%223.4%22%2F%3E%3Cpath%20d%3D%22M8%2012.6l3%203%205.6-6.2%22%20stroke%3D%22%23e8558e%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  logo:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f3f6fe%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23dfe8fc%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%231a45a5%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20.6%2012a8.6%208.6%200%201%201-6.4-8.3%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%223.7%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  base:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f3f6fe%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23dfe8fc%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%231a45a5%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203.4l8.4%204.2-8.4%204.2-8.4-4.2z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M3.6%2012.2L12%2016.4l8.4-4.2%22%2F%3E%3Cpath%20d%3D%22M3.6%2016.6L12%2020.8l8.4-4.2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  project:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f3f6fe%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23dfe8fc%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%231a45a5%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%2021V4%22%2F%3E%3Cpath%20d%3D%22M7%205h11l-2.2%203.4L18%2012H7z%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  work:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f2f8fa%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23dcecf2%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%230a5976%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222.7%22%20y%3D%227.6%22%20width%3D%2218.6%22%20height%3D%2212.5%22%20rx%3D%222.7%22%2F%3E%3Cpath%20d%3D%22M9%207.6V6a1.9%201.9%200%200%201%201.9-1.9h2.2A1.9%201.9%200%200%201%2015%206v1.6%22%2F%3E%3Cpath%20d%3D%22M2.9%2012.7h18.2%22%20stroke%3D%22%230e7fa8%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  book:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f8f6fd%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ece6f9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%23593c98%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%207.2v12.6%22%2F%3E%3Cpath%20d%3D%22M12%207.2C10.6%205.8%208.4%205.2%206%205.2H3.7v11.9H6c2.4%200%204.6.6%206%202%22%2F%3E%3Cpath%20d%3D%22M12%207.2c1.4-1.4%203.6-2%206-2h2.3v11.9H18c-2.4%200-4.6.6-6%202%22%20stroke%3D%22%237f56d9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  habit:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f2faf6%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ddf1e7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%2310703f%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2.6%2013h3.3l1.9-4.7%202.7%209.4%202-4.7h3.1%22%2F%3E%3Ccircle%20cx%3D%2219.4%22%20cy%3D%2213%22%20r%3D%222.2%22%20fill%3D%22%2317a05a%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  estate:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fbf8f3%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f4ecde%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%237b5514%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.3%2011.1L12%204.3l8.7%206.8%22%2F%3E%3Cpath%20d%3D%22M5.5%2011.4V20h13v-8.6%22%2F%3E%3Cpath%20d%3D%22M9.9%2020v-5.2h4.2V20%22%20stroke%3D%22%23b07a1c%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  muse:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fcf4fa%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6e3f1%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%23882d6f%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%202.9l1.9%205.2L17%2010l-5.1%201.9L10%2017.1%208.1%2011.9%203%2010l5.1-1.9z%22%20fill%3D%22%23882d6f%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M17.7%2014.1l.9%202.4%202.4.9-2.4.9-.9%202.4-.9-2.4-2.4-.9%202.4-.9z%22%20fill%3D%22%23c2409e%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+  dream:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f6f5fc%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e7e5f8%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%233f3791%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M21%2012.79A9%209%200%201%201%2011.21%203%207%207%200%200%200%2021%2012.79z%22%20fill%3D%22%233f3791%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M5.2%2015.4l.7%201.9%201.9.7-1.9.7-.7%201.9-.7-1.9L2.6%2018l1.9-.7z%22%20fill%3D%22%235a4fcf%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"
 };
 /* 예시 데이터가 언제 열어도 '오늘' 기준으로 보이게 해 주는 도우미 */
 function DAY(n){const d=new Date();d.setDate(d.getDate()+(n||0));
@@ -3204,7 +3249,46 @@ function renderHero(){
   document.getElementById("heroSub").textContent=h[1];
   const ne=document.getElementById("heroNs"),nn=ns();
   if(ne) ne.innerHTML=nn.statement?`<span class="hnsy">${nn.year}</span>${esc(nn.statement)}<span class="hnsd">D-${nsDays()}</span>`:"";
-  document.getElementById("heroCh").innerHTML=chImg(cur);
+  try{document.body.setAttribute("data-cur",cur);}catch(e){}
+  document.getElementById("heroCh").innerHTML=heroRing();
+}
+/* 현재 탭의 한 줄 지표 → [퍼센트, 표시값, 단위, 라벨] */
+function heroMetric(){
+  try{
+    const s=DATA[cur];
+    if(s.type==="habit"){
+      const st=monthStats(calY,calM),g=s.goalCount||20;
+      return [Math.min(100,Math.round(st.cnt/g*100)),st.cnt,"/"+g,"이번 달"];
+    }
+    if(s.type==="daily"){
+      const all=dayTodos(daySel),dn=all.filter(x=>x.done).length;
+      if(!all.length) return [0,0,"개","오늘 할 일"];
+      return [Math.round(dn/all.length*100),Math.round(dn/all.length*100),"%","오늘 해냄"];
+    }
+    if(s.type==="muse"){
+      const f=s.followers||{cur:0,goal:1};
+      return [Math.min(100,Math.round(f.cur/(f.goal||1)*100)),
+        Math.min(100,Math.round(f.cur/(f.goal||1)*100)),"%","팔로워 목표"];
+    }
+    if(s.type==="dream"){
+      const t=s.items||[],dn=t.filter(x=>x.done).length;
+      if(!t.length) return [0,0,"개","적어둔 꿈"];
+      return [Math.round(dn/t.length*100),dn,"/"+t.length,"이뤄진 꿈"];
+    }
+    const its=s.items||[];
+    if(!its.length) return [0,0,"개","적어둔 것"];
+    const avg=Math.round(its.reduce((a,b)=>a+(+b.progress||0),0)/its.length);
+    return [Math.min(100,avg),Math.min(100,avg),"%","평균 진행"];
+  }catch(e){ return [0,0,"%","진행"]; }
+}
+function heroRing(){
+  const m=heroMetric(),C=2*Math.PI*19.4;
+  const off=C*(1-Math.max(0,Math.min(100,m[0]))/100);
+  return '<svg class="hring" viewBox="0 0 44 44" aria-hidden="true">'
+   +'<circle class="hrt" cx="22" cy="22" r="19.4"/>'
+   +'<circle class="hrp" cx="22" cy="22" r="19.4" stroke-dasharray="'+C.toFixed(2)+'"'
+   +' stroke-dashoffset="'+off.toFixed(2)+'"/></svg>'
+   +'<div class="hrin"><b>'+m[1]+'<i>'+m[2]+'</i></b><span>'+m[3]+'</span></div>';
 }
 function cheerMsg(){
   const s=hs(),st=monthStats(calY,calM),goal=s.goalCount||20;
