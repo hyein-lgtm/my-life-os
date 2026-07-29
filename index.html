@@ -173,6 +173,8 @@ body[data-cur="logo"]{--acc:#2563eb;--accw:#e9effd}
   padding:5px 12px;font-size:12px;font-weight:600;transition:.15s}
 .chip:hover{border-color:#bed3f7;color:var(--blue)}
 .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.tdone{border-color:#9fb0cc;color:var(--navy);background:#eef2f9}
+.chip.on.tdone{background:var(--navy);border-color:var(--navy);color:#fff}
 /* cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
 .grid.cal{grid-template-columns:repeat(auto-fill,minmax(304px,1fr))}
@@ -211,7 +213,12 @@ html[data-theme=dark] input.rowin{background:#1e2124;color:#e7edf8}
 .pill{background:#f2f6fc;color:#5b6d8c;border-radius:999px;padding:3px 9px;font-weight:600}
 .pill.st-todo{background:#eef2f8;color:#54637e}
 .pill.st-doing{background:var(--blue-l);color:var(--blue-d)}
-.pill.st-done{background:#d8f5ea;color:var(--ok)}
+.pill.st-done{background:var(--navy);color:#fff}
+/* 완료 = 진한 네이비 · 글씨는 흰색이라 묻히지 않습니다 */
+.card.done{border-color:#9fb0cc}
+.card.done .head{color:var(--navy)}
+.card.done .head .t{background:#e2e8f4;color:var(--navy)}
+.card.done h3{color:var(--navy)}
 .pill.st-hold{background:#fdeccd;color:var(--warn)}
 .note{font-size:12.5px;color:var(--muted);line-height:1.65;white-space:pre-wrap}
 .bar{height:20px;border-radius:999px;background:#eef2f9;position:relative;overflow:hidden}
@@ -374,7 +381,7 @@ html[data-theme=dark] .field .bnl .cnt{background:#1e2a3e}
 .sechead span{font-size:11.5px;font-weight:600;color:var(--muted)}
 .dtag.mtag{cursor:pointer;background:var(--blue-l);color:var(--blue-d);border-color:#c9dcfb;
   font-weight:700;max-width:100%}
-.dtag.mtag.st-done{background:#d8f5ea;color:#0b7f59;border-color:#a9e6cf}
+.dtag.mtag.st-done{background:var(--navy);color:#fff;border-color:var(--navy)}
 .dtag.mtag.st-doing{background:#dbe8ff;color:var(--blue-d);border-color:#bcd4fb}
 .dtag.mtag.st-hold{background:#fdeccd;color:#a16207;border-color:#f4d79b}
 .dtag.mtag.st-todo{background:#eef2f8;color:#64748b;border-color:#dfe6f0}
@@ -961,7 +968,8 @@ html[data-theme=dark] .titem .x.tm{background:#1e2124;color:#cbd5e6}
 .pjlist{display:grid;gap:8px}
 .pj{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;border-left:4px solid #c9d2e2}
 .pj.st-doing{border-left-color:#5b86e5}
-.pj.st-done{border-left-color:#1a9c66}
+.pj.st-done{border-left-color:var(--navy)}
+.pj.st-done .pjtag{background:#e2e8f4;color:var(--navy)}
 .pj.st-hold{border-left-color:#e2a03f}
 .pj.open{border-color:#8896ad;box-shadow:0 2px 10px rgba(15,27,51,.05)}
 .pjh{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:12px 13px;cursor:pointer;position:relative}
@@ -1329,7 +1337,14 @@ html[data-theme=dark] .x.ed{color:#b7c3d7}
 html[data-theme=dark] .card .head .acts button:hover{border-color:#1f2f4c}
 html[data-theme=dark] .pill{background:#213552;color:#a6b2c5}
 html[data-theme=dark] .pill.st-todo{background:#213451;color:#b9c1cf}
-html[data-theme=dark] .pill.st-done{background:#204e3d}
+html[data-theme=dark] .pill.st-done{background:#2f5296;color:#fff}
+html[data-theme=dark] .card.done{border-color:#33507f}
+html[data-theme=dark] .card.done .head{color:#a9c4f5}
+html[data-theme=dark] .card.done .head .t{background:#22355c;color:#cfe0ff}
+html[data-theme=dark] .card.done h3{color:#dce8ff}
+html[data-theme=dark] .chip.tdone{background:#1b2a49;border-color:#33507f;color:#a9c4f5}
+html[data-theme=dark] .chip.on.tdone{background:#2f5296;border-color:#2f5296;color:#fff}
+html[data-theme=dark] .pj.st-done .pjtag{background:#22355c;color:#cfe0ff}
 html[data-theme=dark] .pill.st-hold{background:#4e3d20}
 html[data-theme=dark] .bar{background:#213251}
 html[data-theme=dark] .bar>i{background:linear-gradient(90deg,#214169,#346eec)}
@@ -1368,7 +1383,7 @@ html[data-theme=dark] .glab b span{color:#b7c3d7}
 html[data-theme=dark] .gsum{color:#b9c1cf;border-top:1px dashed #413b28}
 html[data-theme=dark] .sechead{color:#778aad}
 html[data-theme=dark] .dtag.mtag{border-color:#1f314d}
-html[data-theme=dark] .dtag.mtag.st-done{background:#204e3d;color:#23ecaa;border-color:#21694e}
+html[data-theme=dark] .dtag.mtag.st-done{background:#2f5296;color:#fff;border-color:#3c63ae}
 html[data-theme=dark] .dtag.mtag.st-doing{background:#20314f;border-color:#1f304c}
 html[data-theme=dark] .dtag.mtag.st-hold{background:#4e3d20;color:#efa63d;border-color:#695121}
 html[data-theme=dark] .dtag.mtag.st-todo{background:#213451;color:#afb8c5;border-color:#23344b}
@@ -1555,7 +1570,7 @@ html[data-theme=dark] .sbtn.on.k0{background:#60708a;border-color:#60708a}
 html[data-theme=dark] .sbtn.on.k4{background:#1ca56c;border-color:#1ca56c}
 html[data-theme=dark] .pj{border-left:4px solid #253044}
 html[data-theme=dark] .pj.st-doing{border-left-color:#213769}
-html[data-theme=dark] .pj.st-done{border-left-color:#1ca56c}
+html[data-theme=dark] .pj.st-done{border-left-color:#4b7ad4}
 html[data-theme=dark] .pj.st-hold{border-left-color:#e4a74e}
 html[data-theme=dark] .pj.open{border-color:#253143}
 html[data-theme=dark] .pjh:hover{background:#222e53}
@@ -2276,6 +2291,10 @@ function save(){
   try{gsTouch();}catch(e){}}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function uid(){return "x"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+/* 다 끝낸 항목인지 (완료 / 발행) */
+function isDone(i){ return !!i && (i.status==="완료"||i.status==="발행"); }
+/* 완료된 항목은 앞에 체크 표시를 붙여 한눈에 보이게 합니다 */
+function stLabel(s){ return ((s==="완료"||s==="발행")?"✓ ":"")+String(s||""); }
 function stClass(s){
   if(s==="완료"||s==="발행")return "st-done";
   if(s==="진행중"||s==="촬영"||s==="편집")return "st-doing";
@@ -3546,7 +3565,7 @@ function renderFilters(){
   }
   const tags=s.tags||[];
   el.innerHTML=[`<button class="chip ${filter==="ALL"?"on":""}" onclick="setF('ALL')">ALL ★</button>`]
-    .concat(tags.map(t=>`<button class="chip ${filter===t?"on":""}" onclick="setF('${esc(t)}')">${esc(t)}</button>`)).join("");
+    .concat(tags.map(t=>`<button class="chip ${filter===t?"on":""}${t===DONETAG()?" tdone":""}" onclick="setF('${esc(t)}')">${esc(t)}</button>`)).join("");
 }
 function setF(t){filter=t;render();}
 function isDoneCard(i){
@@ -4306,7 +4325,8 @@ function taskCard(i){
   const qz=(i.quotes||[]).length?` <span class="pill">✍ ${i.quotes.length}</span>`:"";
   const fa=(i.links||[]).filter(l=>l&&l.file&&l.file.d).length;
   const fp=fa?` <span class="pill">📎 ${fa}</span>`:"";
-  return `<div class="card" data-id="${i.id}" onpointerdown="cardDown(event,'${i.id}')">
+  const dn=isDone(i)?" done":"";
+  return `<div class="card${dn}" data-id="${i.id}" onpointerdown="cardDown(event,'${i.id}')">
     <div class="head"><span class="t">${chImg(cur)}${esc(i.tag||"")}</span>
       <div class="acts"><button class="drag" title="누른 채 움직여서 순서 바꾸기" aria-label="순서 이동" onpointerdown="cardDown(event,'${i.id}',1)">⠿<b>이동</b></button><button title="전체 내용 열기" aria-label="상세 열기" onclick="openDetail('${i.id}')">⤢<b>상세</b></button>
       <button title="제목·메모 빠르게 고치기" aria-label="수정" onclick="openEdit('${i.id}')">✎<b>수정</b></button>
@@ -4315,7 +4335,7 @@ function taskCard(i){
       <h3 class="clickable" onclick="openDetail('${i.id}')">${esc(i.title)}</h3>
       ${i.goal?`<div class="note">🎯 ${esc(i.goal)}</div>`:""}
       <div class="meta">
-        <span class="pill ${stClass(i.status)}">${esc(i.status)}</span>
+        <span class="pill ${stClass(i.status)}">${esc(stLabel(i.status))}</span>
         ${i.due?`<span class="pill">📅 ${esc(i.due)} <b>${dday(i.due)}</b></span>`:""}${td}${qz}${fp}
       </div>
       ${stepView(pct)}
@@ -4649,7 +4669,7 @@ function pjTogTodo(id,tid,ev){
   if(ev)ev.stopPropagation();
   const i=find(id);if(!i)return;
   const t=(i.todos||[]).find(x=>x.id===tid);if(!t)return;
-  t.done=!t.done;autoProgress(i);render();
+  t.done=!t.done;const _ch=autoProgress(i);autoTagSay(_ch);render();
 }
 function pjTogMs(id,x,ev){
   if(ev)ev.stopPropagation();
@@ -4665,7 +4685,7 @@ function pjRow(i){
     <div class="pjh" onclick="pjTog('${i.id}',event)">
       <span class="pjar">${op?"▾":"▸"}</span>
       <span class="pjt">${esc(i.title)}</span>
-      <span class="pill ${stClass(i.status)}">${esc(i.status)}</span>
+      <span class="pill ${stClass(i.status)}">${esc(stLabel(i.status))}</span>
       ${i.tag?`<span class="pjtag">${esc(i.tag)}</span>`:""}
       ${i.due?`<span class="pjd ${near?"near":""}">📅 ${esc(i.due.slice(5))} ${esc(dd)}</span>`:""}
       ${td.length?`<span class="pjck">☑ ${dn}/${td.length}</span>`:""}
@@ -5180,19 +5200,47 @@ function setF2(k,v){
   i[k]=(k==="progress")?Math.max(0,Math.min(100,+v||0)):v;
   save();renderDetail();
 }
-function autoProgress(i){
-  if(!i.todos.length)return;
+/* 「완독」 같은 완료용 분류가 있는 탭(독서)에서는, 체크리스트를 다 채우면
+   분류도 저절로 완독이 됩니다. 체크를 풀면 원래 분류로 되돌아갑니다.
+   그 밖의 탭은 분류(신규·외주 등)를 건드리지 않고 완료 표시만 붙습니다. */
+function DONETAG(){ return "완독"; }
+function autoTag(i,key){
+  const s=DATA[key||cur];
+  if(!s||!Array.isArray(s.tags)||s.tags.indexOf(DONETAG())<0) return "";
+  const was=i.tag;
+  if((+i.progress||0)>=100){ if(i.tag!==DONETAG()) i._pretag=i.tag||""; i.tag=DONETAG(); }
+  else if(i.tag===DONETAG()){
+    const back=i._pretag||"";
+    i.tag=(back&&s.tags.indexOf(back)>=0)?back:((s.tags.indexOf("읽는중")>=0)?"읽는중":(s.tags[0]||i.tag));
+    delete i._pretag;
+  }
+  return (was===i.tag)?"":i.tag;
+}
+function autoProgress(i,key){
+  if(!i.todos.length)return "";
   i.progress=Math.round(i.todos.filter(t=>t.done).length/i.todos.length*100);
-  if(i.progress===100) i.status="완료"; else if(i.progress>0&&i.status==="할일") i.status="진행중";
+  if(i.progress===100) i.status="완료";
+  else if(i.status==="완료") i.status=(i.progress>0)?"진행중":"할일";   /* 체크를 풀면 완료도 풀립니다 */
+  else if(i.progress>0&&i.status==="할일") i.status="진행중";
+  return autoTag(i,key);
+}
+/* 분류가 저절로 바뀌면 알려주고, 그 카드가 필터에 가려지지 않게 필터를 풀어줍니다 */
+function autoTagSay(ch){
+  if(!ch)return;
+  if(filter!=="ALL"&&filter!==ch) filter="ALL";
+  try{ toast(ch===DONETAG()?"📚 다 읽었네요! 「완독」으로 바꿨어요":"↩ 「"+ch+"」으로 되돌렸어요"); }catch(e){}
 }
 function addTodo(){
   const el=document.getElementById("a_todo"),v=(el.value||"").trim();if(!v)return;
-  const i=find(detailId);i.todos.push({id:uid(),text:v,done:false});autoProgress(i);save();renderDetail();
+  const i=find(detailId);i.todos.push({id:uid(),text:v,done:false});
+  const ch=autoProgress(i);save();renderDetail();render();autoTagSay(ch);
   const n=document.getElementById("a_todo");if(n)n.focus();
 }
 function togTodo(tid){
   const i=find(detailId),t=i.todos.find(x=>x.id===tid);if(!t)return;
-  t.done=!t.done;autoProgress(i);save();renderDetail();
+  t.done=!t.done;
+  const ch=autoProgress(i);
+  save();renderDetail();render();autoTagSay(ch);
 }
 const SUBNAME={todos:"체크리스트 항목",milestones:"마일스톤",links:"링크",quotes:"문장",logs:"기록"};
 /* 상세 화면 안의 모든 줄을 그 자리에서 고칠 수 있게 */
@@ -5224,10 +5272,10 @@ function delSub(key,tid){
   const x=i[key].findIndex(v=>v.id===tid);if(x<0)return;
   const gone=i[key][x],id=detailId;
   i[key].splice(x,1);
-  if(key==="todos")autoProgress(i);save();renderDetail();
-  toastU("🗑 "+(SUBNAME[key]||"항목")+"을 지웠어요",function(){
+  const ch0=(key==="todos")?autoProgress(i):"";save();renderDetail();render();
+  toastU("🗑 "+(SUBNAME[key]||"항목")+"을 지웠어요"+(ch0?" · 분류는 「"+ch0+"」로 바뀌었어요":""),function(){
     const j=find(id)||i;j[key].splice(Math.min(x,j[key].length),0,gone);
-    if(key==="todos")autoProgress(j);save();renderDetail();toast("↩ 되돌렸어요");
+    if(key==="todos")autoProgress(j);save();renderDetail();render();toast("↩ 되돌렸어요");
   });
 }
 function delIdx(key,x){
