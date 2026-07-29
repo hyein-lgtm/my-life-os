@@ -10,7 +10,7 @@
 
 GitHub에 로그인 → 오른쪽 위 **＋** → **New repository**
 
-- Repository name: `my-life-os` (원하는 이름)
+- Repository name: **`my-life-os`** (이 이름으로 만들어야 아래 주소들이 그대로 맞습니다)
 - **Public** 선택 — Pages 무료 호스팅은 Public에서만 됩니다
 - "Add a README file"은 **체크 해제** (직접 올릴 거예요)
 - **Create repository**
@@ -20,15 +20,20 @@ GitHub에 로그인 → 오른쪽 위 **＋** → **New repository**
 만들어진 빈 저장소 화면에서 **uploading an existing file** 링크를 누르고, 아래 네 개를 드래그해서 올립니다.
 
 ```
-index.html     ← 앱 본체
-README.md      ← 소개
-LICENSE        ← MIT
-DEPLOY.md      ← 이 문서
+index.html        ← 앱 본체
+og.png            ← 링크 공유 미리보기 이미지 (1200×630)
+README.md         ← 소개
+LICENSE           ← MIT (코드)
+ASSET_LICENSE.md  ← 캐릭터·로고 이용 조건
+DEPLOY.md         ← 이 문서
+.nojekyll         ← GitHub Pages가 파일을 건드리지 않게 함
 ```
+
+`og.png`는 카카오톡·인스타 DM·커뮤니티에 링크를 붙였을 때 뜨는 대표 이미지입니다. `index.html`과 **같은 폴더(저장소 최상단)** 에 있어야 하고, 파일 이름을 바꾸면 `index.html` 안의 `og:image` 주소도 같이 고쳐야 합니다.
 
 아래 초록 버튼 **Commit changes**.
 
-> 파일이 크다고 경고가 뜰 수 있는데(캐릭터 그림이 안에 박혀 있어서 500KB 정도), 100MB 미만이면 문제없습니다.
+> 파일 하나에 앱 전체가 들어 있어서 350KB 정도 됩니다. 100MB 미만이면 문제없습니다.
 
 ## 3단계 · 데모 페이지 켜기
 
@@ -41,10 +46,10 @@ DEPLOY.md      ← 이 문서
 1~2분 뒤 같은 화면 위쪽에 주소가 뜹니다.
 
 ```
-https://hyein-lgtm.github.io/hyein-life-demo/
+https://hyein-lgtm.github.io/my-life-os/
 ```
 
-이 주소를 README 맨 위 데모 링크에 넣어주세요.
+`index.html` 안의 canonical·OG 주소는 이미 이 주소로 맞춰져 있습니다. **다른 이름으로 저장소를 만들었다면** 아래 「링크 미리보기 확인하기」의 네 군데를 꼭 고쳐주세요.
 
 ## 4단계 · 템플릿으로 지정하기 ⭐
 
@@ -61,7 +66,28 @@ https://hyein-lgtm.github.io/hyein-life-demo/
 - Topics: `dashboard`, `pwa`, `productivity`, `single-file`, `no-backend`, `korean`
 - ✅ Use your GitHub Pages website
 
-스크린샷을 넣으면 반응이 확 달라집니다. `docs/` 폴더를 만들어 이미지를 올리고 README의 스크린샷 자리에 걸어주세요.
+스크린샷을 넣으면 반응이 확 달라집니다. `docs/` 폴더를 만들어 아래 다섯 장을 올리면 README에 바로 걸립니다.
+
+```
+docs/01-onboarding.png    첫 실행 안내 화면
+docs/02-daily-mobile.png  데일리 투두 (휴대폰 폭)
+docs/03-project.png       프로젝트 북극성
+docs/04-habit.png         운동 달력
+docs/05-tabs.png          설정 → 사용할 탭 선택
+```
+
+### 링크 미리보기 확인하기
+
+`index.html` 안에는 공유 미리보기용 정보가 들어 있습니다. 주소를 바꿨다면 아래 네 군데를 내 주소로 맞춰주세요.
+
+```
+<link rel="canonical" href="...">
+<meta property="og:url" content="...">
+<meta property="og:image" content=".../og.png">
+<meta name="twitter:image" content=".../og.png">
+```
+
+올린 뒤 카카오톡 나에게 보내기로 링크를 한 번 붙여보면 바로 확인됩니다. 이미지가 안 뜨면 캐시 때문일 수 있으니, [카카오 디버거](https://developers.kakao.com/tool/debugger/sharing)에서 **초기화**를 한 번 눌러주세요. 페이스북·인스타는 [Sharing Debugger](https://developers.facebook.com/tools/debug/)에서 같은 일을 합니다.
 
 ---
 
@@ -117,7 +143,9 @@ GitHub Pages는 캐시가 좀 셉니다. 강제 새로고침(Ctrl+Shift+R / Cmd+
 - [ ] `index.html` 안에 내 개인 정보가 남아 있지 않은가 (이름, 계정, 거래처명, 실제 일정)
 - [ ] `CONFIG.owner`가 비어 있는가 (비어 있어야 다른 사람에게 안내 마법사가 뜹니다)
 - [ ] `CONFIG.sample`이 `true`인가 (처음 보는 사람은 빈 화면보다 예시가 이해가 빠릅니다)
-- [ ] README의 데모 링크를 실제 Pages 주소로 바꿨는가
+- [ ] README의 데모 링크와 `index.html`의 canonical·og:url·og:image·twitter:image가 실제 Pages 주소와 같은가
 - [ ] Settings → General → Template repository 체크했는가
 - [ ] 데모 주소를 시크릿 창으로 열어서 안내 마법사가 뜨는지 확인했는가
 - [ ] 휴대폰에서도 한 번 열어봤는가
+- [ ] `og.png`를 같이 올렸는가 (카카오톡에 링크 붙여서 대표 이미지가 뜨는지 확인)
+- [ ] `ASSET_LICENSE.md`와 `.nojekyll`을 같이 올렸는가

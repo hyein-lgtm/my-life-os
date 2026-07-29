@@ -27,8 +27,23 @@ window.CONFIG = {
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Life OS">
 <meta name="generator" content="My Life OS template">
-<meta name="description" content="할 일·프로젝트·독서·운동·브랜드를 한 곳에서 기록하는 나만의 대시보드. 설치 없이 브라우저에서 바로.">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+<meta name="description" content="할 일·프로젝트·독서·운동·콘텐츠를 한곳에서 기록하세요. 가입도 월 결제도 없어요.">
+<link rel="canonical" href="https://hyein-lgtm.github.io/my-life-os/">
+<!-- 링크 공유 미리보기 (카카오톡·인스타 DM·커뮤니티) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="My Life OS">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://hyein-lgtm.github.io/my-life-os/">
+<meta property="og:title" content="My Life OS | 나만의 개인 대시보드">
+<meta property="og:description" content="할 일·프로젝트·독서·운동·콘텐츠를 한곳에서 기록하세요. 가입도 월 결제도 없어요.">
+<meta property="og:image" content="https://hyein-lgtm.github.io/my-life-os/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="My Life OS 대시보드 화면 미리보기">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Life OS | 나만의 개인 대시보드">
+<meta name="twitter:description" content="할 일·프로젝트·독서·운동·콘텐츠를 한곳에서 기록하세요. 가입도 월 결제도 없어요.">
+<meta name="twitter:image" content="https://hyein-lgtm.github.io/my-life-os/og.png">
 <link rel="manifest">
 <link rel="icon">
 <link rel="apple-touch-icon">
@@ -1090,6 +1105,10 @@ html[data-theme=dark] .onbin:focus{background:var(--card)}
 .onbnote p:last-child{margin-bottom:0}
 .onbnote p:before{content:"·";position:absolute;left:4px;top:0;font-weight:900;color:var(--blue)}
 .onbfine{margin:11px 2px 0;font-size:11px;color:var(--ink-3);line-height:1.55;text-align:center;word-break:keep-all}
+.onbeyeb{display:block;margin-bottom:5px;font-size:10.5px;font-weight:900;letter-spacing:.1em;
+  color:var(--blue);text-transform:uppercase}
+.onbtop b.big{font-size:19.5px;line-height:1.35;word-break:keep-all}
+@media(max-width:420px){.onbtop b.big{font-size:18px}}
 .hlpg{padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:var(--card);margin-bottom:9px}
 .hlpg h4{margin:0 0 7px;font-size:12.5px;font-weight:900;color:var(--ink-3);letter-spacing:-.01em}
 .hlpr{display:flex;gap:9px;padding:6px 0;align-items:flex-start}
@@ -1575,7 +1594,7 @@ html[data-theme=dark] .stat i.sd{background:#3b465c}
   letter-spacing:-.02em}
 .moremenu .mi:hover{background:var(--blue-xl);color:var(--blue)}
 
-/* ===== 빠른 메모 ===== */
+/* ===== 일단 저장 ===== */
 .qmwrap{display:flex;flex-direction:column;gap:11px}
 .qmta{width:100%;font-size:15px;font-weight:600;line-height:1.6;padding:13px 14px;
   border:1.5px solid var(--line);border-radius:14px;outline:none;resize:vertical;
@@ -1682,7 +1701,7 @@ html[data-theme=dark] .statmore:hover{background:#1e2a3e}
   <div class="topbar">
     <div class="brand">
       <div class="logo" id="tbLogo" onclick="logoTap()"></div>
-      <div><h1 id="tbName">My Life OS</h1><p id="tbSub">workspace</p></div>
+      <div><h1 id="tbName">My Life OS</h1><p id="tbSub">My workspace</p></div>
     </div>
     <div class="topmeta"><span id="tbNow">workspace</span><span class="dot"></span><span id="clock">00:00</span></div>
   </div>
@@ -1771,6 +1790,7 @@ html[data-theme=dark] .statmore:hover{background:#1e2a3e}
 /* ===========================================================
    1) 여기만 고치면 됩니다 — 샘플 데이터
    =========================================================== */
+/* 심볼·로고 그래픽(CHAR/ICON)은 MIT 대상이 아닙니다. ASSET_LICENSE.md 참고 */
 const CHAR={
   daily:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fef6f9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fce6ef%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%23a23b63%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%223.4%22%2F%3E%3Cpath%20d%3D%22M8%2012.6l3%203%205.6-6.2%22%20stroke%3D%22%23e8558e%22%20stroke-width%3D%222.3%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
   logo:"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22p%22%20x1%3D%22.15%22%20y1%3D%220%22%20x2%3D%22.85%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f3f6fe%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23dfe8fc%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2211.7%22%20fill%3D%22url(%23p)%22%2F%3E%3Cg%20transform%3D%22translate(2.75%202.75)%20scale(.771)%22%20fill%3D%22none%22%20stroke%3D%22%231a45a5%22%20stroke-width%3D%221.95%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20.6%2012a8.6%208.6%200%201%201-6.4-8.3%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%223.7%22%20fill%3D%22%232563eb%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
@@ -3006,10 +3026,33 @@ function gsLoad(){try{return JSON.parse(localStorage.getItem(GS_KEY))||{};}catch
 function gsSaveMeta(){try{localStorage.setItem(GS_KEY,JSON.stringify(gsMeta));}catch(e){}}
 function gsOn(){return !!(gsMeta.cid&&gsMeta.use);}
 function gsReady(){return !!(window.google&&window.google.accounts&&window.google.accounts.oauth2);}
+/* 구글 로그인 스크립트는 동기화를 실제로 쓸 때만 불러옵니다 (기본 상태에선 외부 통신 없음) */
+let GSSCRIPT=null;
+function gsScript(){
+  if(gsReady())return Promise.resolve(true);
+  if(GSSCRIPT)return GSSCRIPT;
+  GSSCRIPT=new Promise((res,rej)=>{
+    try{
+      const s=document.createElement("script");
+      s.src="https://accounts.google.com/gsi/client";s.async=true;s.defer=true;
+      s.onload=()=>res(true);
+      s.onerror=()=>{GSSCRIPT=null;rej(new Error("구글 로그인 스크립트를 불러오지 못했어요"));};
+      document.head.appendChild(s);
+      setTimeout(()=>{if(!gsReady()){GSSCRIPT=null;rej(new Error("구글 로그인 스크립트 응답이 없어요"));}},15000);
+    }catch(e){GSSCRIPT=null;rej(e);}
+  });
+  return GSSCRIPT;
+}
 function gsDev(){if(!gsMeta.dev){gsMeta.dev=/Mobi|Android|iPhone|iPad/.test(navigator.userAgent)?"휴대폰":"PC";gsSaveMeta();}return gsMeta.dev;}
 function gsTime(t){const d=new Date(t||gsMeta.last||Date.now());return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
 function gsStatus(t){const e=document.getElementById("gsStat");if(e)e.textContent=t;const b=document.getElementById("gsDot");if(b)b.className="gsdot "+(gsTok?"ok":(gsOn()?"wait":"off"));}
 function gsAuth(inter){
+  if(!gsTok||Date.now()>=gsExp-60000){
+    if(gsMeta.cid&&!gsReady()) return gsScript().then(()=>gsAuth2(inter));
+  }
+  return gsAuth2(inter);
+}
+function gsAuth2(inter){
   return new Promise((res,rej)=>{
     if(gsTok&&Date.now()<gsExp-60000)return res(gsTok);
     if(!gsMeta.cid)return rej(new Error("클라이언트 ID를 먼저 넣어주세요"));
@@ -3140,6 +3183,7 @@ async function gsForce(dir){
   gsBusy=false;
 }
 function openSync(){
+  try{gsScript().catch(function(){});}catch(e){}   /* 이 화면을 열 때 비로소 구글 스크립트를 불러옵니다 */
   document.getElementById("mIc").innerHTML=chImg("base");
   document.getElementById("mTitle").textContent="🔄 기기 간 동기화";
   const on=gsOn(),txt=JSON.stringify(DATA);
@@ -4610,21 +4654,21 @@ function tlEdit(kind){
   inp.onblur=function(){commit(1);};
 }
 
-/* ---- 인박스 (빠른 메모) ---- */
+/* ---- 나중에 분류하기 (일단 저장한 메모) ---- */
 function inbox(){ if(!DATA.__inbox)DATA.__inbox=[]; return DATA.__inbox; }
 function openQuick(){
   editing=null;
   const mS=document.getElementById("mSave");
   mS.removeAttribute("data-ns"); mS.style.display="none";
   document.getElementById("mIc").innerHTML="📥";
-  document.getElementById("mTitle").textContent="빠른 메모";
+  document.getElementById("mTitle").textContent="일단 저장";
   document.getElementById("mForm").innerHTML=
     '<div class="qmwrap">'+
-      '<textarea id="qm_text" class="qmta" rows="3" aria-label="빠른 메모" placeholder="지금 떠오른 것, 한 줄이면 충분해요"></textarea>'+
-      '<div class="qmhint">저장하면 <b>📥 인박스</b>에 쌓여요. 나중에 카드로 옮기면 돼요.</div>'+
+      '<textarea id="qm_text" class="qmta" rows="3" aria-label="일단 저장" placeholder="지금 떠오른 것, 한 줄이면 충분해요"></textarea>'+
+      '<div class="qmhint">저장하면 <b>📥 나중에 분류하기</b>에 쌓여요. 시간 될 때 자세히 기록하면 돼요.</div>'+
       '<div class="qmact">'+
-        '<button type="button" class="btn primary" onclick="quickSave()">📥 인박스에 담기</button>'+
-        '<button type="button" class="btn" onclick="openEdit()">상세 카드로 쓸래요 →</button>'+
+        '<button type="button" class="btn primary" onclick="quickSave()">📥 일단 저장</button>'+
+        '<button type="button" class="btn" onclick="openEdit()">자세히 기록하기 →</button>'+
       '</div></div>';
   document.getElementById("overlay").classList.add("on");
   const ta=document.getElementById("qm_text"); if(ta)ta.focus();
@@ -4636,7 +4680,7 @@ function quickSave(){
   inbox().unshift({id:uid(),t:t,d:todayStr()});
   ui().inboxOpen=true;
   closeEdit(); render();
-  toast("📥 인박스에 담았어요");
+  toast("📥 저장했어요");
 }
 function inboxOpen(){ return ui().inboxOpen===true; }
 function inboxFold(){ ui().inboxOpen=!inboxOpen(); save();render(); }
@@ -4645,12 +4689,12 @@ function inboxBox(){
   const op=inboxOpen();
   const rows=l.map(function(m,x){
     return '<div class="ibrow"><span class="ibt">'+esc(m.t)+'</span><span class="ibd">'+esc(m.d||"")+'</span>'+
-      '<button class="ibb" title="이 탭의 카드로 옮기기" aria-label="카드로 옮기기" onclick="inboxToCard('+x+')">→ 카드로</button>'+
+      '<button class="ibb" title="자세히 기록하기" aria-label="자세히 기록하기" onclick="inboxToCard('+x+')">→ 자세히</button>'+
       '<button class="ibb dl" title="메모 삭제" aria-label="메모 삭제" onclick="inboxDel('+x+')">✕</button></div>';
   }).join("");
   return '<div class="foldbox ib '+(op?"open":"")+'">'+
     '<button type="button" class="foldbtn" aria-expanded="'+(op?"true":"false")+'" onclick="inboxFold()">'+
-      '<span class="fi">'+(op?"▾":"▸")+'</span><span class="ft">📥 인박스</span>'+
+      '<span class="fi">'+(op?"▾":"▸")+'</span><span class="ft">📥 나중에 분류하기</span>'+
       '<span class="fs">'+l.length+'개 담김</span></button>'+
     (op?'<div class="foldin">'+rows+'</div>':'')+'</div>';
 }
@@ -5252,7 +5296,7 @@ function openHelp(){
   document.getElementById("mForm").innerHTML=
     '<div class="hlpg"><h4>기록할 때</h4>'
     + hlpRow("🖍","메모에 형광펜 칠하기","카드를 열어 메모를 쓸 때, 칠하고 싶은 글자를 드래그한 다음 <b>🖍 형광펜</b>을 누르면 노랗게 칠해져요. 같은 자리를 다시 누르면 지워집니다.")
-    + hlpRow("📥","빠른 메모 → 인박스","툴바의 <b>＋ 새 기록</b>은 한 줄만 적는 빠른 메모예요. 저장하면 <b>📥 인박스</b>에 쌓이고, 나중에 제대로 된 카드로 옮기면 됩니다. 처음부터 자세히 적고 싶으면 같은 화면의 <b>상세 카드로 쓸래요 →</b>를 누르세요.")
+    + hlpRow("📥","일단 저장 → 나중에 분류하기","툴바의 <b>＋ 새 기록</b>을 누르면 한 줄만 적고 <b>📥 일단 저장</b>할 수 있어요. 저장한 메모는 <b>📥 나중에 분류하기</b>에 쌓이고, 시간 될 때 <b>→ 자세히</b>를 눌러 제대로 된 카드로 옮기면 됩니다. 처음부터 자세히 적고 싶으면 <b>자세히 기록하기 →</b>를 누르세요.")
     + hlpRow("♺","반복되는 할 일 자동 만들기","데일리 투두 맨 아래 <b>♺ 반복 루틴 관리</b>에서 요일을 정해두면 매일 아침 할 일이 저절로 생겨요. 쉬고 싶은 주에는 끄기만 하면 됩니다.")
     + hlpRow("📤","계속 밀리는 할 일 옮기기","며칠째 미룬 할 일에는 <b>몇 번 밀렸어요</b> 안내가 붙어요. 거기서 <b>프로젝트로 옮기기</b>를 누르면 할 일이 프로젝트 카드로 바뀝니다.")
     + '</div>'
@@ -5276,7 +5320,7 @@ function exportJSON(){
   DATA.__backup=todayStr();
   const blob=new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);
-  a.download="work_os_backup_"+todayStr()+".json";a.click();URL.revokeObjectURL(a.href);
+  a.download="my_life_os_backup_"+todayStr()+".json";a.click();URL.revokeObjectURL(a.href);
   save();renderBk();
   try{toast("💾 백업 파일을 내려받았어요");}catch(e){}
 }
@@ -5293,22 +5337,53 @@ function ME(){
   try{ return (DATA&&DATA.__ui&&DATA.__ui.owner)||CONFIG.owner||"나"; }
   catch(e){ return CONFIG.owner||"나"; }
 }
+/* 이름을 적었을 때만 "OO의 Life OS", 비워두면 "My workspace" */
+function ownerName(){
+  try{ return String((DATA&&DATA.__ui&&DATA.__ui.owner)||CONFIG.owner||"").trim(); }
+  catch(e){ try{return String(CONFIG.owner||"").trim();}catch(e2){return "";} }
+}
 function renderBrand(){
   const n=document.getElementById("tbName"); if(n)n.textContent=CONFIG.appName;
   const s=document.getElementById("tbSub");
-  if(s)s.textContent=CONFIG.tagline||(ME()+"'s workspace · "+new Date().getFullYear());
+  const yr=new Date().getFullYear(), who=ownerName();
+  if(s)s.textContent=CONFIG.tagline||(who?(who+"의 Life OS · "+yr):("My workspace · "+yr));
   const c=document.getElementById("credit");
-  if(c)c.textContent="© "+new Date().getFullYear()+" "+ME()+" · "+CONFIG.appName;
+  if(c)c.textContent="© "+yr+(who?(" "+who):"")+" · "+CONFIG.appName;
   try{document.title=CONFIG.appName;}catch(e){}
 }
 
 /* ===== 첫 실행 안내 마법사 ===== */
-let ONB={mode:"full",step:0,name:"",tabs:null,sample:true,names:{},del:[],undel:[]};
+let ONB={mode:"full",step:0,name:"",tabs:null,sample:true,kit:"balanced",names:{},del:[],undel:[]};
 const ONBSTEPS={
-  full:["intro","name","sample"],
+  full:["intro","name","sample","kit"],
   name:["name"],
   tabs:["tabs"]
 };
+/* 처음 한 번만 물어보는 시작 구성 */
+const ONBKITS={
+  light:   {label:"가볍게 시작하기",     tabs:["daily","project","habit"]},
+  balanced:{label:"균형 있게 시작하기",  tabs:["daily","project","book","habit"]},
+  all:     {label:"전체 기능 둘러보기",  tabs:null}
+};
+function onbKit(v){ ONB.kit=v; onbRender(); }
+function onbKitTabs(k){
+  const it=ONBKITS[k]||ONBKITS.all, all=onbTabList();
+  if(!it.tabs) return all.slice();
+  const w=it.tabs.filter(x=>all.indexOf(x)>=0);
+  return w.length?w:all.slice();
+}
+function onbKitDesc(k){
+  if(!(ONBKITS[k]&&ONBKITS[k].tabs)) return "지금 있는 탭을 전부 켜 둡니다";
+  return onbKitTabs(k).map(onbLabel).join(" · ");
+}
+function onbApplyKit(){
+  try{
+    const it=ONBKITS[ONB.kit]||ONBKITS.all;
+    if(!it.tabs){ DATA.__off=[]; return; }
+    const all=onbTabList(), want=onbKitTabs(ONB.kit);
+    DATA.__off=all.filter(k=>want.indexOf(k)<0);
+  }catch(e){}
+}
 function onbDelList(){ try{ return (DATA&&Array.isArray(DATA.__del))?DATA.__del.slice():[]; }catch(e){ return []; } }
 function onbTabList(){
   const gone=onbDelList().filter(k=>(ONB.undel||[]).indexOf(k)<0);
@@ -5409,6 +5484,7 @@ function onbStart(mode){
     name:(DATA&&DATA.__ui&&DATA.__ui.owner)||CONFIG.owner||"",
     tabs:null,
     sample:CONFIG.sample!==false,
+    kit:"balanced",
     names:{}, del:[], undel:[]
   };
   const off=(DATA&&Array.isArray(DATA.__off))?DATA.__off:[];
@@ -5442,16 +5518,26 @@ function onbRender(){
         B=document.getElementById("onbB"),C=document.getElementById("onbCh"),
         dots=document.getElementById("onbDots"),
         back=document.getElementById("onbBack"),next=document.getElementById("onbNext");
-  let ch="logo",t="",d="",body="";
+  let ch="logo",t="",d="",body="",thtml=null;
   if(cur==="intro"){
     ch="logo";
-    t="내 삶을 한곳에 정리하는 "+CONFIG.appName;
+    thtml='<span class="onbeyeb">'+esc(CONFIG.appName)+'</span>흩어진 일과 일상을,<br>내 방식대로 한곳에.';
+    t="흩어진 일과 일상을, 내 방식대로 한곳에.";
     d="할 일·프로젝트·독서·운동·콘텐츠 기록을 한 화면에서. 회원가입도, 월 결제도 없어요.";
     body='<div class="onbnote">'
        + '<p>가입 없이 바로 사용할 수 있어요.</p>'
-       + '<p>기록은 현재 기기의 브라우저에 저장됩니다.</p>'
+       + '<p>기록은 이 기기의 브라우저에 저장돼요. 작성한 기록 데이터는 별도 서버로 전송하거나 저장하지 않아요.</p>'
        + '<p>중요한 기록은 설정에서 주기적으로 백업해 주세요.</p>'
        + '</div>';
+  }else if(cur==="kit"){
+    ch="habit";
+    t="어떤 구성으로 시작할까요?";
+    d="필요한 것만 켜 두면 화면이 훨씬 단순해져요. 나중에 언제든 바꿀 수 있어요.";
+    body=Object.keys(ONBKITS).map(function(k){
+      return '<button class="onbopt '+(ONB.kit===k?"on":"")+'" onclick="onbKit(\''+k+'\')">'
+        + '<b>'+esc(ONBKITS[k].label)+'</b><span>'+esc(onbKitDesc(k))+'</span></button>';
+    }).join("")
+    + '<p class="onbfine">꺼둔 탭도 기록은 그대로 보관돼요.<br>설정 → <b>🎛 사용할 탭 선택</b>에서 다시 켤 수 있어요.</p>';
   }else if(cur==="name"){
     ch="logo";
     t=ONB.mode==="name"?"이름 바꾸기":"만나서 반가워요";
@@ -5502,7 +5588,7 @@ function onbRender(){
        + '숨은 기능은 설정 안 <b>💡 이런 것도 있어요</b>에 모아뒀어요.</p>';
   }
   if(C)C.innerHTML='<img alt="" src="'+(CHAR[ch]||CHAR.logo)+'">';
-  if(T)T.textContent=t;
+  if(T){ if(thtml){T.className="big";T.innerHTML=thtml;} else {T.className="";T.textContent=t;} }
   if(D)D.textContent=d;
   if(B)B.innerHTML=body;
   if(dots)dots.innerHTML=steps.length>1
@@ -5561,6 +5647,7 @@ function onbFinish(){
   if(!DATA.__ui)DATA.__ui={};
   if(ONB.mode==="full"||ONB.mode==="name")DATA.__ui.owner=String(ONB.name||"").trim();
   if(ONB.mode==="tabs")onbApplyTabs();
+  if(ONB.mode==="full")onbApplyKit();
   DATA.__ui.setup=true;
   const ks=tabKeys();
   if(ks.indexOf(cur)<0)cur=ks[0]||"daily";
@@ -5571,6 +5658,33 @@ function onbFinish(){
     if(ONB.mode==="full")toast("반가워요"+(DATA.__ui.owner?", "+DATA.__ui.owner+" 님":"")+" 🎉");
     else toast("저장했어요");
   }catch(e){}
+  if(ONB.mode==="full"){ try{ setTimeout(nudgeShow,1100); }catch(e){} }
+}
+
+/* ---- 처음 한 번만 뜨는 첫 기록 유도 ---- */
+function nudgeClose(){
+  var w=document.getElementById("nudgeWrap");
+  if(w&&w.parentNode)w.parentNode.removeChild(w);
+  try{ if(!DATA.__ui)DATA.__ui={}; DATA.__ui.nudged=true; save(); }catch(e){}
+}
+function nudgeGo(){
+  nudgeClose();
+  try{ var ks=tabKeys(); if(ks.indexOf("daily")>=0)go("daily"); }catch(e){}
+  try{ openQuick(); }catch(e){}
+}
+function nudgeShow(){
+  try{ if(DATA&&DATA.__ui&&DATA.__ui.nudged)return; }catch(e){}
+  if(document.getElementById("nudgeWrap"))return;
+  var w=document.createElement("div");
+  w.id="nudgeWrap";
+  w.setAttribute("style","position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9998;width:min(400px,calc(100% - 24px))");
+  w.innerHTML='<div role="status" style="position:relative;background:var(--card,#fff);color:var(--tx,#111);border:1px solid var(--line,#dfe4ee);border-radius:16px;padding:16px 16px 14px;box-shadow:0 14px 40px rgba(12,20,40,.22)">'
+    +'<button type="button" onclick="nudgeClose()" aria-label="닫기" style="position:absolute;top:8px;right:8px;width:28px;height:28px;border:0;background:transparent;color:inherit;opacity:.45;font-size:15px;line-height:1;cursor:pointer">✕</button>'
+    +'<div style="font-size:15.5px;font-weight:800;margin-bottom:5px">가볍게 시작해볼까요?</div>'
+    +'<div style="font-size:13.5px;line-height:1.6;opacity:.8;margin-bottom:12px">오늘 해야 할 일 하나만 적어보세요.</div>'
+    +'<button type="button" id="nudgeBtn" onclick="nudgeGo()" style="width:100%;padding:11px 12px;border:0;border-radius:11px;background:#2563eb;color:#fff;font-size:14.5px;font-weight:800;cursor:pointer">＋ 할 일 쓰기</button>'
+    +'</div>';
+  document.body.appendChild(w);
 }
 
 /* ---- 기록을 못 찾았을 때 뜨는 복구 화면 ---- */
