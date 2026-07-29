@@ -2270,6 +2270,7 @@ function normalize(d){
 }
 function save(){
   if(LOSTMODE) return;
+  if(typeof iabOn==="function"&&iabOn()){ try{iabWarn();}catch(e){} return; }
   try{localStorage.setItem(KEY,JSON.stringify(DATA));}catch(e){
     try{toast("⚠ 저장 공간이 꽉 찼어요. 사진을 조금 줄여주세요");}catch(e2){}}
   try{gsTouch();}catch(e){}}
@@ -3860,6 +3861,7 @@ function moneyView(){
 /* ---- 기록 입력 · 수정 · 삭제 ---- */
 let moDayCur=null,moEditId=null,moKindCur="out",moPickId="";
 function openMoney(k,id){
+  if(typeof iabOn==="function"&&iabOn()){ iabBlock(); return; }
   const s=mo();if(!s)return;
   moDayCur=k||todayStr(); moEditId=id||null; moPickId="";
   let e=null;
@@ -4807,6 +4809,7 @@ function tlEdit(kind){
 /* ---- 나중에 분류하기 (일단 저장한 메모) ---- */
 function inbox(){ if(!DATA.__inbox)DATA.__inbox=[]; return DATA.__inbox; }
 function openQuick(){
+  if(typeof iabOn==="function"&&iabOn()){ iabBlock(); return; }
   editing=null;
   const mS=document.getElementById("mSave");
   mS.removeAttribute("data-ns"); mS.style.display="none";
@@ -4927,6 +4930,7 @@ function statsSayHtml(){
 
 /* ---- 빠른 편집 모달 ---- */
 function openEdit(id){
+  if(typeof iabOn==="function"&&iabOn()){ iabBlock(); return; }
   if(noClick&&id)return;
   const s=DATA[cur];
   if(s.type==="habit"){openDay(todayStr());return;}
@@ -5829,6 +5833,7 @@ function blankData(){
   return d;
 }
 function onbStart(mode){
+  if(typeof iabOn==="function"&&iabOn()){ iabShow(); return; }   // 앱 안 브라우저에서는 시작 설정을 하지 않습니다
   ONB={
     mode:mode||"full",
     step:0,
@@ -6019,6 +6024,86 @@ function onbFinish(){
   }
 }
 
+
+/* ===================== 앱 안 브라우저(인앱) 차단 안내 ====================
+   인스타그램·카카오톡 같은 앱 안의 브라우저는 저장 공간이 따로 놀거나
+   앱을 닫으면 기록이 통째로 사라질 수 있습니다.
+   그래서 여기서는 시작 설정(온보딩)도, 기록 작성도 하지 않고
+   Safari / Chrome 으로 옮겨 열도록 전체 화면으로 안내합니다. */
+var IAB=null, IABPEEK=false, IABWARNAT=0;
+function iabApp(){
+  if(IAB===null){ try{ IAB=insEnv().app||""; }catch(e){ IAB=""; } }
+  return IAB;
+}
+function iabOn(){
+  try{ if(isStandalone()) return false; }catch(e){}
+  return !!iabApp();
+}
+function iabBrowser(){ try{ return isIOS()?"Safari":"Chrome"; }catch(e){ return "Chrome"; } }
+function iabWarn(){
+  var t=Date.now(); if(t-IABWARNAT<4000) return; IABWARNAT=t;
+  try{ toast("앱 안 브라우저라 저장되지 않아요"); }catch(e){}
+}
+function iabBlock(){ iabShow(); }
+function iabHide(){
+  var w=document.getElementById("iabWrap");
+  if(w&&w.parentNode)w.parentNode.removeChild(w);
+  try{ document.documentElement.style.overflow=""; }catch(e){}
+}
+function iabPeek(){
+  IABPEEK=true; iabHide(); iabBar();
+  try{ toast("둘러보기 중이에요 · 기록은 저장되지 않아요"); }catch(e){}
+}
+function iabBar(){
+  if(document.getElementById("iabBar"))return;
+  var b=document.createElement("div");
+  b.id="iabBar";
+  b.setAttribute("style","position:fixed;left:0;right:0;bottom:0;z-index:9997;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:#0f1b33;color:#fff;font-size:12.5px;line-height:1.45");
+  b.innerHTML='<span style="flex:1 1 auto">둘러보기 중이에요 · 기록은 저장되지 않아요</span>'
+    +'<button type="button" onclick="iabShow()" style="flex:0 0 auto;padding:7px 12px;border:0;border-radius:9px;background:#fff;color:#0f1b33;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit">'+iabBrowser()+'에서 열기</button>';
+  document.body.appendChild(b);
+}
+function iabStepsHtml(){
+  var ios=false; try{ ios=isIOS(); }catch(e){}
+  if(ios){
+    return insStep(1,"화면 <b>오른쪽 아래</b>(또는 오른쪽 위)의 <b>'…'</b> 버튼 누르기")
+      + insStep(2,"<b>'Safari로 열기'</b> 또는 <b>'외부 브라우저에서 열기'</b> 선택")
+      + insStep(3,"열린 <b>Safari</b>에서 시작하기");
+  }
+  return insStep(1,"화면 <b>오른쪽 위</b>의 <b>'⋮'</b> 또는 <b>'…'</b> 버튼 누르기")
+    + insStep(2,"<b>'다른 브라우저로 열기'</b> 또는 <b>'Chrome으로 열기'</b> 선택")
+    + insStep(3,"열린 <b>Chrome</b>에서 시작하기");
+}
+function iabShow(){
+  if(!iabOn()) return;
+  try{ insClose(); }catch(e){}
+  var app=iabApp(), br=iabBrowser();
+  var w=document.getElementById("iabWrap");
+  if(!w){
+    w=document.createElement("div");
+    w.id="iabWrap";
+    w.setAttribute("role","dialog");
+    w.setAttribute("aria-modal","true");
+    w.setAttribute("style","position:fixed;inset:0;z-index:100000;background:var(--bg,#f6f8fc);color:var(--ink,#0f1b33);display:flex;align-items:center;justify-content:center;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));overflow:auto;font-family:inherit");
+    document.body.appendChild(w);
+  }
+  w.innerHTML='<div style="max-width:420px;width:100%">'
+    +'<div style="font-size:40px;line-height:1;margin-bottom:14px">🌐</div>'
+    +'<div style="font-size:22px;font-weight:800;line-height:1.35;margin-bottom:10px">'+esc(br)+'에서 열어주세요</div>'
+    +'<div style="font-size:14.5px;line-height:1.7;opacity:.85;margin-bottom:8px">'
+      +(app?'지금은 <b>'+esc(app)+'</b> 안의 브라우저예요. ':'')
+      +'앱 안의 브라우저에서는 적은 기록이 저장되지 않고 사라질 수 있어요.</div>'
+    +'<div style="font-size:13.5px;line-height:1.65;margin:0 0 18px;padding:11px 13px;border-radius:11px;background:rgba(37,99,235,.09)">그래서 여기서는 <b>시작 설정과 기록 작성을 잠시 멈춰</b> 뒀어요. '+esc(br)+'에서 열면 바로 시작할 수 있어요.</div>'
+    +'<ol style="list-style:none;padding:0;margin:0 0 16px">'+iabStepsHtml()+'</ol>'
+    +insBtn("링크 복사하기","iabCopy()",1)
+    +insBtn("다시 확인","iabRetry()",0)
+    +'<button type="button" onclick="iabPeek()" style="display:block;width:100%;margin:4px 0 0;padding:10px;border:0;background:transparent;color:inherit;opacity:.55;font-size:12.5px;font-weight:600;text-decoration:underline;cursor:pointer;font-family:inherit">그래도 여기서 둘러보기 (저장 안 됨)</button>'
+    +'</div>';
+  try{ document.documentElement.style.overflow="hidden"; }catch(e){}
+}
+function iabCopy(){ try{ insCopy(); }catch(e){} }
+function iabRetry(){ try{ location.reload(); }catch(e){} }
+
 /* ---- 처음 한 번만 뜨는 첫 기록 유도 ---- */
 function nudgeClose(){
   var w=document.getElementById("nudgeWrap");
@@ -6135,10 +6220,14 @@ setTheme(themeGet());
 render();
 renderInstall();
 if(LOSTFROM){ try{save();}catch(e){} try{toast("✓ 이전 기록을 찾아서 되살렸어요");}catch(e){} }
-if(LOSTMODE){ try{lostShow();}catch(e){} }
-if(FIRSTRUN && !LOSTMODE && !(DATA.__ui&&DATA.__ui.setup) && !CONFIG.owner) onbStart("full");
+if(LOSTMODE && !iabOn()){ try{lostShow();}catch(e){} }
+if(iabOn()){
+  /* 앱 안 브라우저 —— 이름 입력·시작 설정보다 먼저 전체 화면 안내를 띄웁니다 */
+  try{ iabShow(); }catch(e){}
+}
+else if(FIRSTRUN && !LOSTMODE && !(DATA.__ui&&DATA.__ui.setup) && !CONFIG.owner) onbStart("full");
 else if(!LOSTMODE){ try{ setTimeout(bkNagShow,1400); }catch(e){} }
-if(gsOn()&&!LOSTMODE){gsMeta.dirty=false;gsSaveMeta();setTimeout(()=>{gsSync();},1200);
+if(gsOn()&&!LOSTMODE&&!iabOn()){gsMeta.dirty=false;gsSaveMeta();setTimeout(()=>{gsSync();},1200);
   document.addEventListener("visibilitychange",()=>{if(!document.hidden)gsSync();});}
 </script>
 </body>
