@@ -9,6 +9,7 @@
 <!-- ===========================================================
      ⚙ 설정 — 여기 6줄만 고치면 나만의 앱이 됩니다.
      아무것도 안 고쳐도 첫 실행 때 화면에서 물어봐요.
+     (이 파일은 인터넷 주소로 열어야 홈 화면 앱으로 설치할 수 있어요.)
      =========================================================== -->
 <script>
 window.CONFIG = {
@@ -25,8 +26,7 @@ window.CONFIG = {
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Life OS">
-<meta name="generator" content="My Life OS template">
+<meta name="apple-mobile-web-app-title" content="My Life OS">
 <meta name="description" content="할 일·프로젝트·독서·운동·콘텐츠를 한곳에서 기록하세요. 가입도 월 결제도 없어요.">
 <link rel="canonical" href="https://hyein-lgtm.github.io/my-life-os/">
 <!-- 링크 공유 미리보기 (카카오톡·인스타 DM·커뮤니티) -->
@@ -44,9 +44,9 @@ window.CONFIG = {
 <meta name="twitter:title" content="My Life OS | 나만의 개인 대시보드">
 <meta name="twitter:description" content="할 일·프로젝트·독서·운동·콘텐츠를 한곳에서 기록하세요. 가입도 월 결제도 없어요.">
 <meta name="twitter:image" content="https://hyein-lgtm.github.io/my-life-os/og.png">
-<link rel="manifest">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon">
-<link rel="apple-touch-icon">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>My Life OS</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -151,8 +151,8 @@ body[data-cur="logo"]{--acc:#2563eb;--accw:#e9effd}
 .hrin b{font-size:27px;font-weight:800;letter-spacing:-.045em;color:var(--ink)}
 .hrin b i{font-size:14px;font-weight:700;font-style:normal;color:var(--acc);margin-left:1px}
 .hrin span{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:-.01em}
-@media(max-width:660px){.hrin b{font-size:21px}.hrin b i{font-size:11px}.hrin span{font-size:9.5px}}
-@media(max-width:720px){.hrin b{font-size:19px}.hrin span{font-size:9.5px}}
+@media(max-width:660px){.hrin b{font-size:21px}.hrin b i{font-size:11.5px}.hrin span{font-size:11.5px}}
+@media(max-width:720px){.hrin b{font-size:19px}.hrin span{font-size:11.5px}}
 /* board */
 .board{padding:18px 24px 28px}
 .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
@@ -281,7 +281,7 @@ textarea.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:
 .qrow .x{border:none;background:transparent;color:#8290a8;cursor:pointer}
 .qrow .x:hover{color:var(--danger)}
 .addline input.pg{flex:none;width:64px}
-@media(max-width:640px){.dcell{min-height:60px}.dtag{font-size:9.5px}}
+@media(max-width:640px){.dcell{min-height:60px}.dtag{font-size:11.5px}}
 
 .empty{padding:56px 12px;text-align:center;color:#6f80a0;font-size:13px;line-height:1.9;
   border:1px dashed var(--line);border-radius:var(--r)}
@@ -844,8 +844,8 @@ html[data-theme=dark] .titem .x.tm{background:#1e2124;color:#cbd5e6}
   .rtbig{font-size:30px}
   .qroute{padding:15px 10px 4px}
   .qstop{padding:0 2px}
-  .qnm{font-size:9.5px}
-  .qtx{font-size:10px;min-height:38px}
+  .qnm{font-size:11.5px}
+  .qtx{font-size:11.5px;min-height:38px}
 }
 /* --- 비밀 탭: 꿈 보드 --- */
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);z-index:9999;
@@ -918,7 +918,7 @@ html[data-theme=dark] .titem .x.tm{background:#1e2124;color:#cbd5e6}
 .sbtn.on.k0{background:#8e99ab;border-color:#8e99ab;box-shadow:none}
 .sbtn.on.k4{background:#1a9c66;border-color:#1a9c66;box-shadow:0 2px 8px rgba(26,156,102,.25)}
 @media (max-width:560px){
-  .sbtn{min-width:0;padding:8px 2px;font-size:10.5px}
+  .sbtn{min-width:0;padding:8px 2px;font-size:11.5px}
   .sdots i{width:13px}
 }
 /* --- 프로젝트 토글 목록 --- */
@@ -1020,7 +1020,7 @@ html[data-theme=dark] .fsz,html[data-theme=dark] .pjlk span.fchip{background:#1e
   body{padding:0 0 env(safe-area-inset-bottom)}
   .app{border-radius:0;min-height:100vh;box-shadow:none}
   .topbar{position:sticky;top:0;z-index:30;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top))}
-  .brand h1{font-size:15.5px}.brand p{font-size:10.5px}
+  .brand h1{font-size:15.5px}.brand p{font-size:11.5px}
   .brand .logo{width:34px;height:34px}
   .hero{padding:16px 16px 0}
   .hero h2{font-size:19px}.hero p{font-size:12px;line-height:1.55}
@@ -1057,24 +1057,24 @@ html[data-theme=dark] .fsz,html[data-theme=dark] .pjlk span.fchip{background:#1e
   .calbox{padding:11px}
   .cal-body.big{gap:4px}
   .dcell{min-height:62px;padding:4px;border-radius:9px}
-  .dnum{font-size:10.5px}
-  .dtag{font-size:9.5px;padding:1px 3px;border-radius:5px}
+  .dnum{font-size:11.5px}
+  .dtag{font-size:11.5px;padding:1px 3px;border-radius:5px}
   .dtags{gap:2px}
   .monthnav{flex-wrap:wrap;gap:6px}
   .monthnav .m{min-width:auto;flex:1}
   /* 목표 패널 */
   .goalpanel{padding:13px}
   .glab b{font-size:14.5px}
-  .gsum{font-size:10.5px}
+  .gsum{font-size:11.5px}
   /* 상세 화면 리스트 */
   .row{gap:8px;font-size:13px}
-  .logdate{flex:0 0 62px;font-size:10.5px}
+  .logdate{flex:0 0 62px;font-size:11.5px}
   .addline{flex-wrap:wrap}
   .addline input.dt,.addline input.pg{flex:1 1 100%}
   .addline .btn{flex:none}
   .cheer{padding:10px 12px}
   .cheer .ch{width:44px;height:44px}
-  .perf span{font-size:10.5px}
+  .perf span{font-size:11.5px}
 }
 .credit{text-align:center;font-size:11.5px;color:#8fa2c2;padding:18px 0 4px}
 
@@ -1152,8 +1152,8 @@ html[data-theme=dark] .tbmini.danger{color:#ffb4ab;border-color:#5d2b26}
 @media(max-width:400px){
   .tbrow{gap:4px;padding:5px 6px}
   .tbtog{gap:6px}
-  .tbst{font-size:10.5px;padding-left:4px}
-  .tbmini{padding:8px 7px;font-size:11px}
+  .tbst{font-size:11.5px;padding-left:4px}
+  .tbmini{padding:8px 7px;font-size:11.5px}
 }
 .onbopt{display:block;width:100%;box-sizing:border-box;text-align:left;padding:14px 15px;
   border-radius:14px;border:1.5px solid var(--line);background:var(--bg-2);cursor:pointer;
@@ -1191,7 +1191,7 @@ html[data-theme=dark] .tbmini.danger{color:#ffb4ab;border-color:#5d2b26}
 }
 @media(max-width:360px){
   .tabs{gap:4px;padding:12px 10px 0!important}
-  .tab{font-size:11px!important}
+  .tab{font-size:11.5px!important}
   .tab .ch{width:21px;height:21px}
 }
 
@@ -1679,16 +1679,16 @@ html[data-theme=dark] .chf{background:#1b2634}
   /* 글자 하한 */
   .tab{font-size:11.5px!important}
   .chip{font-size:11.5px}
-  .dtag{font-size:9.5px!important}
-  .dmore{font-size:10px}
-  .cal-head div,.mcal .wk div,.wday .wdw{font-size:11px}
+  .dtag{font-size:11.5px!important}
+  .dmore{font-size:11.5px}
+  .cal-head div,.mcal .wk div,.wday .wdw{font-size:11.5px}
   .hlhint,.legend,.ehint,.setd,.qmhint,.pgt{font-size:12px}
-  .meta,.rollb,.titem .x.tm,.gcnt,.subhd .gcnt,.foldbtn .fs{font-size:11px}
-  .card .head .acts button b,.card .head .acts a.lnk b{font-size:11px}
-  .cqh,.gpct,.stuckrow .st em{font-size:11px}
+  .meta,.rollb,.titem .x.tm,.gcnt,.subhd .gcnt,.foldbtn .fs{font-size:11.5px}
+  .card .head .acts button b,.card .head .acts a.lnk b{font-size:11.5px}
+  .cqh,.gpct,.stuckrow .st em{font-size:11.5px}
 }
 @media(max-width:360px){
-  .tab{font-size:11px!important}
+  .tab{font-size:11.5px!important}
   .chf{width:24px;height:24px}
 }
 html[data-theme=dark] .statmore{background:#1e2124}
@@ -1730,7 +1730,7 @@ html[data-theme=dark] .statmore:hover{background:#1e2a3e}
         <button class="btn more" id="btnMore" aria-haspopup="true" aria-expanded="false" title="더보기" aria-label="더보기 메뉴" onclick="toggleMore(event)">⋯</button><i class="bdot"></i>
         <div class="moremenu" id="moreMenu" role="menu">
           <button class="mi" id="btnTheme" role="menuitem" onclick="closeMore();toggleTheme()">🌙 어둡게</button>
-          <button class="mi" id="btnApp" role="menuitem" style="display:none" onclick="closeMore();installApp()">🏠 홈화면에 추가</button>
+          <button class="mi" id="btnApp" role="menuitem" style="display:none" onclick="closeMore();installApp()">🏠 홈 화면에 추가</button>
           <button class="mi" id="btnBk" role="menuitem" onclick="closeMore();openSettings()">⚙ 설정</button>
         </div>
       </span>
@@ -5178,19 +5178,34 @@ const ICON="iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDpiTIAAAAnFBMVEVflPhikfJgjvBc
 const APPICON="data:image/png;base64,"+ICON;
 (function(){
   const set=(sel,attr,val)=>{const e=document.querySelector(sel);if(e)e.setAttribute(attr,val);};
-  set('link[rel="icon"]',"href",APPICON);
-  set('link[rel="apple-touch-icon"]',"href",APPICON);
-  const mf={name:CONFIG.appName,short_name:CONFIG.appName.slice(0,12),start_url:".",scope:".",
-    display:"standalone",orientation:"portrait",background_color:"#eef3fb",theme_color:"#2563eb",
-    lang:"ko",description:CONFIG.appName+" — 개인 대시보드",
-    icons:[{src:APPICON,sizes:"512x512",type:"image/png",purpose:"any"},
-           {src:APPICON,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
-  const l=document.querySelector('link[rel="manifest"]');
-  if(l)l.setAttribute("href","data:application/manifest+json;charset=utf-8,"+encodeURIComponent(JSON.stringify(mf)));
+  set('link[rel="icon"]',"href",APPICON);          /* 탭 아이콘은 항상 내장본 */
+  const web=(location.protocol==="http:"||location.protocol==="https:");
+  if(web){
+    /* 인터넷 주소로 열었을 때 — 옆에 있는 manifest.webmanifest 와 sw.js 를 그대로 씁니다.
+       이 두 가지가 있어야 안드로이드 Chrome이 「앱 설치」를 띄워줍니다.
+       서비스워커는 사용자가 쓴 기록(localStorage)에 접근하지 않으므로 기록은 안전합니다. */
+    if("serviceWorker" in navigator){
+      window.addEventListener("load",function(){
+        try{ navigator.serviceWorker.register("sw.js",{scope:"./"}); }catch(e){}
+      });
+    }
+  }else{
+    /* index.html 파일을 그냥 더블클릭해서 연 경우 — 옆 파일을 못 읽으므로 내장본으로 대체 */
+    set('link[rel="apple-touch-icon"]',"href",APPICON);
+    const mf={name:CONFIG.appName,short_name:CONFIG.appName.slice(0,12),start_url:".",scope:".",
+      display:"standalone",orientation:"portrait",background_color:"#eef3fb",theme_color:"#2563eb",
+      lang:"ko",description:CONFIG.appName+" — 개인 대시보드",
+      icons:[{src:APPICON,sizes:"512x512",type:"image/png",purpose:"any"},
+             {src:APPICON,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+    set('link[rel="manifest"]',"href","data:application/manifest+json;charset=utf-8,"+encodeURIComponent(JSON.stringify(mf)));
+  }
 })();
 let installEvt=null;
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvt=e;renderInstall();});
-window.addEventListener("appinstalled",()=>{installEvt=null;renderInstall();try{toast("🏠 홈화면에 설치됐어요");}catch(e){}});
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvt=e;renderInstall();
+  try{ if(document.getElementById("insWrap"))insOpen(INS_VIEW); }catch(x){}});
+window.addEventListener("appinstalled",()=>{installEvt=null;renderInstall();
+  try{ insClose(); }catch(e){}
+  try{ toast("🏠 홈 화면에 추가했어요"); }catch(e){}});
 function isStandalone(){
   try{ if(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches) return true; }catch(e){}
   return window.navigator.standalone===true;
@@ -5198,15 +5213,174 @@ function isStandalone(){
 function isIOS(){return /iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;}
 function renderInstall(){
   const b=document.getElementById("btnApp");if(!b)return;
-  b.style.display=(isStandalone()||(!installEvt&&!isIOS()))?"none":"";
+  b.style.display=isStandalone()?"none":"";
 }
-function installApp(){
-  if(installEvt){installEvt.prompt();installEvt=null;setTimeout(renderInstall,400);return;}
-  if(isIOS()){
-    alert("아이폰에서 홈화면에 추가하기\n\n1) 사파리 아래쪽 공유 버튼 (□↑) 누르기\n2) 목록에서 「홈 화면에 추가」 선택\n3) 오른쪽 위 「추가」\n\n그러면 "+CONFIG.appName+" 아이콘으로 앱처럼 열려요 :)");
+
+/* ---- 지금 어떤 환경에서 열려 있나 ----
+   인스타그램·카카오톡 같은 앱 안의 브라우저에서는 홈 화면 추가가 아예 불가능합니다.
+   그래서 「무엇을 눌러야 하는지」를 설치 시도 전에 먼저 보여줍니다. */
+function insEnv(){
+  var u=navigator.userAgent||"", app="";
+  if(/Instagram/i.test(u))app="인스타그램";
+  else if(/Threads/i.test(u))app="스레드";
+  else if(/FBAN|FBAV|FB_IAB/i.test(u))app="페이스북";
+  else if(/KAKAOTALK/i.test(u))app="카카오톡";
+  else if(/NAVER\(inapp/i.test(u))app="네이버 앱";
+  else if(/\bLine\//i.test(u))app="라인";
+  else if(/DaumApps/i.test(u))app="다음 앱";
+  return {ios:isIOS(), aos:/Android/i.test(u), app:app, std:isStandalone()};
+}
+
+/* ---- 홈 화면 추가 안내 ---- */
+var INS_AFTER=null, INS_VIEW="done";
+function insClose(){
+  var w=document.getElementById("insWrap");
+  if(w&&w.parentNode)w.parentNode.removeChild(w);
+  var f=INS_AFTER; INS_AFTER=null;
+  if(typeof f==="function"){ try{ f(); }catch(e){} }
+}
+function insBtn(label,fn,main){
+  return '<button type="button" onclick="'+fn+'" style="display:block;width:100%;margin:0 0 9px;padding:14px 14px;border-radius:13px;border:1px solid '
+    +(main?"transparent":"var(--line,#e6ecf7)")+';background:'+(main?"var(--blue,#2563eb)":"transparent")
+    +';color:'+(main?"#fff":"var(--ink,#0f1b33)")+';font-size:15px;font-weight:800;cursor:pointer;font-family:inherit">'+label+'</button>';
+}
+function insStep(n,t){
+  return '<li style="display:flex;gap:10px;align-items:flex-start;margin:0 0 10px">'
+    +'<span style="flex:0 0 22px;height:22px;border-radius:50%;background:var(--blue-l,#dbe8ff);color:var(--blue-d,#1d4ed8);font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center">'+n+'</span>'
+    +'<span style="font-size:14px;line-height:1.55;padding-top:1px">'+t+'</span></li>';
+}
+/* 사파리 아래쪽 공유 버튼이 어디 있는지 보여주는 그림 */
+function insShareArt(){
+  return '<svg viewBox="0 0 300 126" role="img" aria-label="사파리 아래쪽 가운데 공유 버튼" style="width:100%;max-width:290px;display:block;margin:2px auto 14px">'
+    +'<text x="150" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="var(--blue-d,#1d4ed8)" font-family="inherit">이 버튼이에요</text>'
+    +'<path d="M150 28 L150 52 M150 58 l-6 -8 h12 z" stroke="var(--blue,#2563eb)" stroke-width="2.5" fill="var(--blue,#2563eb)"/>'
+    +'<rect x="8" y="66" width="284" height="52" rx="16" fill="var(--blue-xl,#f4f8ff)" stroke="var(--line,#e6ecf7)"/>'
+    +'<path d="M52 84 l-8 8 l8 8 M96 84 l8 8 l-8 8" stroke="var(--muted,#5c6c88)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    +'<circle cx="150" cy="92" r="23" fill="#fff" stroke="var(--blue,#2563eb)" stroke-width="2.6"/>'
+    +'<path d="M140 92 v10 h20 v-10" stroke="var(--blue,#2563eb)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    +'<path d="M150 100 v-19 M144 87 l6 -6 l6 6" stroke="var(--blue,#2563eb)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+    +'<path d="M198 82 h14 v20 h-14 z M198 82 l7 5 l7 -5" stroke="var(--muted,#5c6c88)" stroke-width="2.2" fill="none" stroke-linejoin="round"/>'
+    +'<rect x="243" y="82" width="18" height="18" rx="4" stroke="var(--muted,#5c6c88)" stroke-width="2.2" fill="none"/>'
+    +'</svg>';
+}
+function insHTML(v,e){
+  var T=function(t){return '<div style="font-size:19px;font-weight:800;line-height:1.4;margin:0 0 8px">'+t+'</div>';};
+  var D=function(t){return '<div style="font-size:14.5px;line-height:1.65;color:var(--muted,#5c6c88);margin:0 0 16px">'+t+'</div>';};
+  var h="";
+  if(v==="done"){
+    h=T("설정이 완료됐어요!")+D("홈 화면에 추가하면 "+esc(CONFIG.appName)+"를 앱처럼 바로 사용할 수 있어요.");
+    if(e.app){
+      h+='<div style="font-size:13.5px;line-height:1.6;background:var(--blue-xl,#f4f8ff);border:1px solid var(--blue-l,#dbe8ff);border-radius:12px;padding:12px 13px;margin:0 0 16px">'
+        +'지금은 <b>'+esc(e.app)+'</b> 안의 브라우저로 열려 있어요. 홈 화면에 추가하려면 '+(e.ios?"Safari":"Chrome")+'에서 열어야 해요.</div>';
+      h+=insBtn((e.ios?"Safari":"Chrome")+"에서 여는 방법","insGo()",1);
+    }else{
+      h+=insBtn("홈 화면에 추가하기","insGo()",1);
+    }
+    h+=insBtn("일단 둘러보기","insClose()",0);
+  }
+  else if(v==="ios-safari"){
+    h=T("홈 화면에 추가하기")+insShareArt()
+      +D("Safari 하단의 공유 버튼을 누른 뒤 <b>'홈 화면에 추가'</b>를 선택해주세요.")
+      +'<ol style="list-style:none;padding:0;margin:0 0 16px">'
+      +insStep(1,"Safari 하단 가운데의 <b>공유 버튼</b> 누르기")
+      +insStep(2,"목록을 조금 내려 <b>'홈 화면에 추가'</b> 선택")
+      +insStep(3,"오른쪽 위 <b>'추가'</b> 누르기")
+      +'</ol>'+insBtn("안내 확인","insClose()",1);
+  }
+  else if(v==="ios-inapp"){
+    h=T("Safari에서 열어주세요")
+      +D("홈 화면에 추가하려면 Safari에서 열어주세요."+(e.app?" 지금은 <b>"+esc(e.app)+"</b> 안의 브라우저예요.":""))
+      +'<ol style="list-style:none;padding:0;margin:0 0 14px">'
+      +insStep(1,"오른쪽 위 또는 아래의 <b>'…'</b> 버튼 누르기")
+      +insStep(2,"<b>'외부 브라우저에서 열기'</b> 또는 <b>'Safari에서 열기'</b> 선택")
+      +insStep(3,"Safari <b>공유 버튼</b> 누르기")
+      +insStep(4,"<b>'홈 화면에 추가'</b> 선택")
+      +'</ol>'
+      +insBtn("안내 확인","insClose()",1)
+      +insBtn("링크 복사하기","insCopy()",0);
+  }
+  else if(v==="aos-inapp"){
+    h=T("Chrome에서 열어주세요")
+      +D("홈 화면에 추가하려면 Chrome에서 열어주세요."+(e.app?" 지금은 <b>"+esc(e.app)+"</b> 안의 브라우저예요.":""))
+      +'<ol style="list-style:none;padding:0;margin:0 0 14px">'
+      +insStep(1,"오른쪽 위의 <b>'⋮'</b> 또는 <b>'…'</b> 버튼 누르기")
+      +insStep(2,"<b>'다른 브라우저로 열기'</b> 또는 <b>'Chrome에서 열기'</b> 선택")
+      +insStep(3,"Chrome 오른쪽 위 <b>'⋮'</b> 누르기")
+      +insStep(4,"<b>'홈 화면에 추가'</b> 또는 <b>'앱 설치'</b> 선택")
+      +'</ol>'
+      +insBtn("안내 확인","insClose()",1)
+      +insBtn("링크 복사하기","insCopy()",0);
+  }
+  else if(v==="aos-prompt"){
+    h=T("앱으로 설치하기")+D("설치하면 홈 화면 아이콘으로 앱처럼 열려요. 주소창 없이 전체 화면으로 뜹니다.")
+      +insBtn("앱으로 설치하기","insGo()",1)+insBtn("일단 둘러보기","insClose()",0);
+  }
+  else if(v==="aos-manual"){
+    h=T("홈 화면에 추가하기")
+      +D("Chrome 오른쪽 위 <b>'⋮'</b>를 누른 뒤 <b>'홈 화면에 추가'</b> 또는 <b>'앱 설치'</b>를 선택해주세요.")
+      +insBtn("안내 확인","insClose()",1);
+  }
+  else{
+    h=T("휴대폰에서 열어주세요")
+      +D("홈 화면 추가는 휴대폰에서만 돼요. 이 주소를 휴대폰으로 보내서 열어보세요.")
+      +insBtn("링크 복사하기","insCopy()",1)+insBtn("닫기","insClose()",0);
+  }
+  return '<div role="dialog" aria-modal="true" style="background:var(--card,#fff);color:var(--ink,#0f1b33);border-radius:20px;padding:24px 20px calc(16px + env(safe-area-inset-bottom,0px));width:min(420px,100%);max-height:86vh;overflow:auto;box-shadow:0 20px 60px rgba(9,16,32,.35)">'+h+'</div>';
+}
+function insOpen(view,after){
+  if(arguments.length>1)INS_AFTER=after||null;
+  if(isStandalone()){ insClose(); return; }
+  var e=insEnv();
+  if(!view)view="done";
+  INS_VIEW=view;
+  var w=document.getElementById("insWrap");
+  if(!w){
+    w=document.createElement("div");
+    w.id="insWrap";
+    w.setAttribute("style","position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(9,16,32,.5);padding:14px");
+    w.addEventListener("click",function(ev){ if(ev.target===w)insClose(); });
+    document.body.appendChild(w);
+  }
+  w.innerHTML=insHTML(view,e);
+}
+function insGo(){
+  var e=insEnv();
+  if(installEvt){
+    var ev=installEvt; installEvt=null;
+    try{ ev.prompt(); }catch(x){}
+    try{ ev.userChoice.then(function(r){ if(!r||r.outcome!=="accepted")insOpen("aos-manual"); else insClose(); }); }
+    catch(x){ insClose(); }
+    setTimeout(renderInstall,400);
     return;
   }
-  alert("브라우저 메뉴(⋮)에서 「앱 설치」 또는 「홈 화면에 추가」를 눌러주세요.");
+  if(e.ios){ insOpen(e.app?"ios-inapp":"ios-safari"); return; }
+  if(e.aos){ insOpen(e.app?"aos-inapp":"aos-manual"); return; }
+  insOpen("desktop");
+}
+function insCopy(){
+  var u=location.href;
+  var done=function(){ try{ toast("링크를 복사했어요"); }catch(e){} };
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(u).then(done,function(){insCopyFB(u,done);});
+      return;
+    }
+  }catch(e){}
+  insCopyFB(u,done);
+}
+function insCopyFB(u,done){
+  try{
+    var t=document.createElement("textarea");
+    t.value=u; t.setAttribute("style","position:fixed;opacity:0");
+    document.body.appendChild(t); t.select(); document.execCommand("copy");
+    document.body.removeChild(t); done();
+  }catch(e){ try{ prompt("아래 주소를 복사해주세요", u); }catch(x){} }
+}
+function installApp(){
+  if(isStandalone()){ try{ toast("이미 홈 화면에 설치돼 있어요"); }catch(e){} return; }
+  INS_AFTER=null;
+  if(installEvt){ insOpen("aos-prompt"); return; }
+  insGo();
 }
 
 /* ---- 다크모드 ---- */
@@ -5233,6 +5407,34 @@ function renderBk(){
 
 /* ---- 설정 메뉴 ---- */
 function bkStale(){const l=DATA.__backup||"";return (!l)||(l<addDays(todayStr(),-14));}
+
+/* ---- 오래 백업하지 않았을 때 뜨는 알림 띠 ----
+   14일이 지나면 한 번 알려주고, 「나중에」를 누르면 7일 동안 다시 뜨지 않습니다. */
+function bkNagClose(){
+  var w=document.getElementById("bkNag");
+  if(w&&w.parentNode)w.parentNode.removeChild(w);
+  try{ if(!DATA.__ui)DATA.__ui={}; DATA.__ui.bknag=todayStr(); save(); }catch(e){}
+}
+function bkNagGo(){ bkNagClose(); try{ exportJSON(); }catch(e){} }
+function bkNagShow(){
+  try{
+    var last=DATA.__backup||"";
+    if(!last||last>=addDays(todayStr(),-14))return;              /* 아직 14일 안 지남 */
+    var snooze=(DATA.__ui&&DATA.__ui.bknag)||"";
+    if(snooze&&snooze>=addDays(todayStr(),-7))return;            /* 최근에 「나중에」를 눌렀음 */
+  }catch(e){ return; }
+  if(document.getElementById("bkNag"))return;
+  var w=document.createElement("div");
+  w.id="bkNag";
+  w.setAttribute("style","position:fixed;left:50%;transform:translateX(-50%);top:calc(10px + env(safe-area-inset-top,0px));z-index:9997;width:min(420px,calc(100% - 20px))");
+  w.innerHTML='<div role="status" style="background:var(--card,#fff);color:var(--ink,#0f1b33);border:1px solid var(--line,#e6ecf7);border-left:4px solid var(--warn,#d97706);border-radius:14px;padding:14px 15px 12px;box-shadow:0 12px 34px rgba(12,20,40,.20)">'
+    +'<div style="font-size:14px;line-height:1.6;margin-bottom:11px">마지막 백업 후 14일이 지났어요. 중요한 기록을 백업해두세요.</div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<button type="button" id="bkNagGo" onclick="bkNagGo()" style="flex:1;padding:11px 10px;border:0;border-radius:11px;background:var(--blue,#2563eb);color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit">백업하기</button>'
+    +'<button type="button" id="bkNagLater" onclick="bkNagClose()" style="flex:0 0 92px;padding:11px 10px;border:1px solid var(--line,#e6ecf7);border-radius:11px;background:transparent;color:var(--muted,#5c6c88);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">나중에</button>'
+    +'</div></div>';
+  document.body.appendChild(w);
+}
 function openSettings(){
   const l=DATA.__backup||"";
   const dk=(themeGet()==="dark");
@@ -5245,7 +5447,8 @@ function openSettings(){
     </div>
     <div class="setg">
       <div class="seth">💾 파일 백업</div>
-      <div class="setd ${bkStale()?"warn":""}">${l?("마지막 백업: "+l):"아직 한 번도 백업하지 않았어요. 브라우저를 정리하면 전부 사라져요."}</div>
+      <div class="setd ${bkStale()?"warn":""}">${l?("마지막 백업: "+l):"아직 한 번도 백업하지 않았어요."}</div>
+      <div class="setd" style="margin-top:4px">작성한 기록은 현재 기기의 브라우저에 저장됩니다. 브라우저 데이터 삭제 또는 기기 변경 시 기록이 사라질 수 있으므로 중요한 기록은 주기적으로 백업해주세요.</div>
       <div class="setb">
         <button class="btn primary" onclick="closeEdit();exportJSON()">파일로 내보내기</button>
         <button class="btn" onclick="closeEdit();document.getElementById('imp').click()">파일에서 복원</button>
@@ -5253,8 +5456,8 @@ function openSettings(){
     </div>
     <div class="setg">
       <div class="seth">📲 홈 화면에 추가</div>
-      <div class="setd">휴대폰 홈 화면에 올려두면 앱처럼 열려요.</div>
-      <div class="setb"><button class="btn" onclick="closeEdit();installApp()">추가하는 방법</button></div>
+      <div class="setd">${isStandalone()?"<b>홈 화면에 설치됨</b> — 지금 앱으로 열려 있어요.":"휴대폰 홈 화면에 올려두면 주소창 없이 앱처럼 열려요."}</div>
+      ${isStandalone()?"":'<div class="setb"><button class="btn" onclick="closeEdit();installApp()">추가하는 방법</button></div>'}
     </div>
     <div class="setg">
       <div class="seth">🎛 사용할 탭 선택</div>
@@ -5304,11 +5507,11 @@ function openHelp(){
     + hlpRow("⇅","순서 바꾸기","할 일은 손으로 끌어서 순서를 바꿔요. 탭은 <b>길게 눌러 끌거나</b>, 설정 → 사용할 탭 선택 → <b>순서 바꾸기</b>에서 화살표로 옮기면 됩니다.")
     + hlpRow("✏️","탭 이름 바꾸기 · 지우기","설정 → <b>사용할 탭 선택</b>에서 탭 이름을 원하는 말로 바꾸고, 안 쓰는 탭은 숨기거나 지울 수 있어요. 지운 탭도 같은 화면에서 다시 만들 수 있습니다.")
     + hlpRow("🔍","검색","툴바 검색창에 적으면 지금 보고 있는 탭의 카드를 걸러 보여줘요.")
-    + hlpRow("🌙","어두운 화면 · 홈 화면 설치","툴바의 <b>⋯</b> 안에 어둡게 바꾸기와 홈 화면에 추가가 들어 있어요. 설정에서도 같은 걸 할 수 있습니다.")
+    + hlpRow("🌙","어두운 화면 · 홈 화면 설치","툴바의 <b>⋯</b> 안에 어둡게 바꾸기와 홈 화면에 추가가 들어 있어요. 홈 화면에 추가해두면 주소창 없이 앱처럼 열립니다.")
     + '</div>'
     + '<div class="hlpg"><h4>기록을 지키는 법</h4>'
     + hlpRow("💾","백업은 파일 하나로","설정 → <b>파일 백업</b>에서 내려받은 JSON 파일 하나에 모든 기록이 들어 있어요. 새 기기에서는 같은 자리에서 그 파일을 고르면 그대로 되살아납니다.")
-    + hlpRow("🔔","오래 백업하지 않으면 알려줘요","2주가 넘으면 <b>⋯</b> 버튼에 빨간 점이 붙어요.")
+    + hlpRow("🔔","오래 백업하지 않으면 알려줘요","2주가 넘으면 <b>⋯</b> 버튼에 빨간 점이 붙고, 화면 위에 백업하라는 안내가 한 번 떠요.")
     + '</div>'
     + '<div class="hlpegg">화면 왼쪽 위 동그란 그림을 톡톡 두드려 보세요 🌙<em>뭔가 하나 숨겨져 있어요</em></div>';
   document.getElementById("mSave").style.display="none";
@@ -5658,7 +5861,14 @@ function onbFinish(){
     if(ONB.mode==="full")toast("반가워요"+(DATA.__ui.owner?", "+DATA.__ui.owner+" 님":"")+" 🎉");
     else toast("저장했어요");
   }catch(e){}
-  if(ONB.mode==="full"){ try{ setTimeout(nudgeShow,1100); }catch(e){} }
+  if(ONB.mode==="full"){
+    /* 설치 안내를 먼저 보여주고, 닫히면 첫 할 일 유도를 띄웁니다.
+       이미 홈 화면 앱으로 실행 중이면 안내는 건너뜁니다. */
+    try{
+      if(isStandalone()) setTimeout(nudgeShow,1100);
+      else setTimeout(function(){ insOpen("done", function(){ setTimeout(nudgeShow,320); }); },700);
+    }catch(e){ try{ setTimeout(nudgeShow,1100); }catch(x){} }
+  }
 }
 
 /* ---- 처음 한 번만 뜨는 첫 기록 유도 ---- */
@@ -5669,8 +5879,9 @@ function nudgeClose(){
 }
 function nudgeGo(){
   nudgeClose();
+  /* 데일리 투두 탭으로 옮기고, 그 탭의 「할 일 쓰기」 입력창을 바로 띄웁니다 */
   try{ var ks=tabKeys(); if(ks.indexOf("daily")>=0)go("daily"); }catch(e){}
-  try{ openQuick(); }catch(e){}
+  try{ openEdit(); }catch(e){ try{ openQuick(); }catch(x){} }
 }
 function nudgeShow(){
   try{ if(DATA&&DATA.__ui&&DATA.__ui.nudged)return; }catch(e){}
@@ -5682,7 +5893,7 @@ function nudgeShow(){
     +'<button type="button" onclick="nudgeClose()" aria-label="닫기" style="position:absolute;top:8px;right:8px;width:28px;height:28px;border:0;background:transparent;color:inherit;opacity:.45;font-size:15px;line-height:1;cursor:pointer">✕</button>'
     +'<div style="font-size:15.5px;font-weight:800;margin-bottom:5px">가볍게 시작해볼까요?</div>'
     +'<div style="font-size:13.5px;line-height:1.6;opacity:.8;margin-bottom:12px">오늘 해야 할 일 하나만 적어보세요.</div>'
-    +'<button type="button" id="nudgeBtn" onclick="nudgeGo()" style="width:100%;padding:11px 12px;border:0;border-radius:11px;background:#2563eb;color:#fff;font-size:14.5px;font-weight:800;cursor:pointer">＋ 할 일 쓰기</button>'
+    +'<button type="button" id="nudgeBtn" onclick="nudgeGo()" style="width:100%;padding:11px 12px;border:0;border-radius:11px;background:#2563eb;color:#fff;font-size:14.5px;font-weight:800;cursor:pointer">첫 할 일 작성하기</button>'
     +'</div>';
   document.body.appendChild(w);
 }
@@ -5762,6 +5973,8 @@ function resetAll(){
 document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeEdit();});
 document.getElementById("detail").addEventListener("click",e=>{if(e.target.id==="detail")closeDetail();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){
+  if(document.getElementById("insWrap")){ insClose(); return; }
+  if(document.getElementById("bkNag")){ bkNagClose(); return; }
   const o=document.getElementById("onb");
   if(o&&!o.hidden){ if(ONB.mode!=="full")onbClose(); return; }
   closeEdit();if(detailId)closeDetail();}});
@@ -5776,6 +5989,7 @@ renderInstall();
 if(LOSTFROM){ try{save();}catch(e){} try{toast("✓ 이전 기록을 찾아서 되살렸어요");}catch(e){} }
 if(LOSTMODE){ try{lostShow();}catch(e){} }
 if(FIRSTRUN && !LOSTMODE && !(DATA.__ui&&DATA.__ui.setup) && !CONFIG.owner) onbStart("full");
+else if(!LOSTMODE){ try{ setTimeout(bkNagShow,1400); }catch(e){} }
 if(gsOn()&&!LOSTMODE){gsMeta.dirty=false;gsSaveMeta();setTimeout(()=>{gsSync();},1200);
   document.addEventListener("visibilitychange",()=>{if(!document.hidden)gsSync();});}
 </script>
