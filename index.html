@@ -361,7 +361,7 @@ html[data-theme=dark] .npc{background:#18202c}
 #nplb .nplbb.dg{border-color:rgba(255,124,124,.55);color:#ffd7d7}
 #nplb .nplbn{font-size:12px;font-weight:800;color:#dce5f6;padding:0 5px}
 /* ---- 📌 옆에 붙는 중요 메모판 (월별 묶음 + 체크리스트) ---- */
-#padFab{position:fixed;right:16px;bottom:18px;z-index:39;width:52px;height:52px;border-radius:50%;
+#padFab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;width:52px;height:52px;border-radius:50%;
   border:1px solid #e6cf6e;background:#ffe9a8;color:#5a4a0e;font-size:20px;line-height:1;cursor:pointer;
   box-shadow:0 10px 26px rgba(20,30,60,.22);display:flex;align-items:center;justify-content:center;
   padding:0;-webkit-tap-highlight-color:transparent}
@@ -369,12 +369,12 @@ html[data-theme=dark] .npc{background:#18202c}
 #padFab .padbdg{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:999px;
   background:#e0483f;color:#fff;font-size:10.5px;font-weight:900;line-height:20px;padding:0 5px;
   font-style:normal;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-#pad{position:fixed;right:0;top:0;bottom:0;width:300px;max-width:90vw;z-index:40;
+#pad{position:fixed;right:0;top:0;bottom:0;width:300px;max-width:90vw;z-index:44;padding-bottom:env(safe-area-inset-bottom,0px);
   display:flex;flex-direction:column;background:var(--card);border-left:1px solid var(--line);
   box-shadow:-14px 0 38px rgba(13,31,66,.16);transform:translateX(103%);
   transition:transform .2s ease-out;overscroll-behavior:contain}
 #pad.on{transform:none}
-.padhd{flex:none;display:flex;align-items:center;gap:7px;padding:13px 12px 9px;border-bottom:1px solid var(--line)}
+.padhd{flex:none;display:flex;align-items:center;gap:7px;padding:calc(13px + env(safe-area-inset-top,0px)) 12px 9px;border-bottom:1px solid var(--line)}
 .padhd b{font-size:13px;font-weight:900;letter-spacing:-.01em;white-space:nowrap}
 .padhd .padsub{font-size:10.5px;color:var(--muted);white-space:nowrap}
 .padhd .sp{flex:1}
@@ -1845,6 +1845,7 @@ html[data-theme=dark] .statmore:hover{background:#1e2a3e}
         <button class="btn more" id="btnMore" aria-haspopup="true" aria-expanded="false" title="더보기" aria-label="더보기 메뉴" onclick="toggleMore(event)">⋯</button><i class="bdot"></i>
         <div class="moremenu" id="moreMenu" role="menu">
           <button class="mi" id="btnTheme" role="menuitem" onclick="closeMore();toggleTheme()">🌙 어둡게</button>
+          <button class="mi" id="btnPad" role="menuitem" onclick="closeMore();padToggle(true)">📌 중요 메모판</button>
           <button class="mi" id="btnApp" role="menuitem" style="display:none" onclick="closeMore();installApp()">🏠 홈화면에 추가</button>
           <button class="mi" id="btnBk" role="menuitem" onclick="closeMore();openSettings()">⚙ 설정</button>
         </div>
@@ -6203,16 +6204,22 @@ function padRender(soft){
   body.innerHTML=h;
   padBadge();
 }
+var PADWIDE=1360,PADTAP=false;
+function padDock(){try{return window.innerWidth>=PADWIDE;}catch(e){return false;}}
 function padApply(){
   var p=padD(),el=document.getElementById("pad");
   if(!el)return;
-  if(p.open){el.classList.add("on");document.body.classList.add("padon");}
+  var op=!!p.open&&(padDock()||PADTAP);
+  if(op){el.classList.add("on");document.body.classList.add("padon");}
   else{el.classList.remove("on");document.body.classList.remove("padon");}
+  var fb=document.getElementById("padFab");
+  if(fb)fb.style.display=op?"none":"flex";
   try{hlSyncAll();}catch(e){}
 }
 function padToggle(f){
   var p=padD();
   p.open=(f===undefined)?!p.open:!!f;
+  PADTAP=p.open;
   padSave();padApply();
   if(p.open)padRender();
 }
@@ -6404,6 +6411,11 @@ function padMove(sg,tid,tg,idx){
 }
 function padInit(){
   padD();padApply();padRender();
+  if(!window._padRz){
+    window._padRz=1;
+    window.addEventListener("resize",function(){try{padApply();}catch(e){}});
+    window.addEventListener("orientationchange",function(){setTimeout(function(){try{padApply();}catch(e){}},220);});
+  }
   if(!window._padWrap){
     window._padWrap=1;
     var _pr=window.render;
@@ -6469,7 +6481,9 @@ renderLogo();
 setTheme(themeGet());
 render();
 renderInstall();
-try{padInit();}catch(e){}
+function padBoot(){try{padInit();}catch(e){}}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",padBoot);
+else setTimeout(padBoot,0);
 if(LOSTFROM){ try{save();}catch(e){} try{toast("✓ 이전 기록을 찾아서 되살렸어요");}catch(e){} }
 if(LOSTMODE){ try{lostShow();}catch(e){} }
 if(FIRSTRUN && !LOSTMODE && !(DATA.__ui&&DATA.__ui.setup) && !CONFIG.owner) onbStart("full");
